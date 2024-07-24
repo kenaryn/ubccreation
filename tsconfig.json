@@ -1,0 +1,44 @@
+{
+  "ts-node": {
+    "files": true
+  },
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "mocha",
+      "node"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "nodenext",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "outDir": "./dist",
+    "noImplicitAny": true,
+    /* Disable emitting comments */
+    "removeComments": true,
+    /* Ensure that casing is correct in imports */
+    "forceConsistentCasingInFileNames": true,
+    /* Type checking */
+    "strict": true,
+    /* Skip type checking all .d.ts files */
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": false,
+    "allowTrailingCommas": true,
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./test/**/*.ts"
+  ],
+  "exclude": [
+    "./node_modules",
+    "./dist"
+  ],
+}

@@ -1,0 +1,27 @@
+services:
+  web:
+    container_name: 'PHP-SERVER-UBC'
+    build: ./docker-build/php
+    volumes:
+    - .:/var/www/ubccreation
+    ports:
+      - 80:80
+    depends_on:
+      - mysql-srv
+      
+  mysql-srv:
+    image: mysql:8.3.0
+    environment:
+      MYSQL_ROOT_PASSWORD: I*LiveForMySelf1602!
+      MYSQL_DATABASE: ubc_db
+      MYSQL_USER: aurele
+      MYSQL_PASSWORD: IAmFreeNow!411
+    ports:
+      - '3306:3306'
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8076:80"
+    links:
+      - mysql-srv:db
