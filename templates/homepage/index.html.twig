@@ -4,17 +4,42 @@
 
 {% block body %}
 
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <p>Email: {{ app.user.email }}</p>
-        <div class="col d-flex align-items-center justify-content-center">
-            <a class="link-secondary btn btn-primary btn-lg w-75 m-1 pl-5 pr-5 fs-1" href="{{ path('app_logout') }}">
-            Se déconnecter</a>
-        </div>
+    
 
-    {% else %}
-        <div class="col d-flex align-items-center justify-content-center">
-            <a class="link-secondary btn btn-primary btn-lg w-75 m-1 pl-5 pr-5 fs-1" href="{{ path('app_login') }}">
-            Se connecter</a>
-    {% endif %}
+<header class="d-flex align-items-center m-2">
+  <a href="./index.html"><img src="./design/logo.png" alt="UBC Création" class="p-3" /></a>
+  <div class="flex-directions-column">
+    <h1>UBC CREATION</h1>
+    <h3>Constructeur de maison individuelles</h3>
+  </div>
+</header>
 
+<div class="container sticky-top">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+    {{ include ('homepage/menu.html.twig' )}}
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
+<!-- END of header and navigational content -->
+
+<main>
+  
+</main>
+
+
+<!-- START of footer content-->
+<footer class="card-footer text-center text-body-secondary pt-4" itemscope itemtype="https://schema.org/Person">
+  <ul class="nav navbar-nav">
+    <li><a href="mailto:ubccreation@yahoo.fr" class="text-decoration-none link-secondary" itemprop="email">ubccreation@yahoo.fr</a></li>
+    <li><a href="tel:+33628477755" class="text-decoration-none link-secondary" itemprop="telephone">06 28 47 77 55</a></li>
+    <li><a href="./legal_notice.html" class="text-decoration-none link-secondary">Mentions légales</a></li>
+  </ul>
+
+  <div class="card-footer text-body-secondary" itemscope itemtype="https://schema.org/Organization">
+    <p itemprop="copyrightHolder">©2023 • UBC Création • Tous droits réservés</p>
+  </div>
+</footer>
 {% endblock %}

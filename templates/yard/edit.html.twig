@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Yard{% endblock %}
+
+{% block body %}
+    <h1>Edit Yard</h1>
+
+    {{ include('yard/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_yard_index') }}">back to list</a>
+
+    {{ include('yard/_delete_form.html.twig') }}
+{% endblock %}

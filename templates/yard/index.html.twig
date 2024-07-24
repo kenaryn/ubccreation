@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Yard index{% endblock %}
+
+{% block body %}
+    <h1>Yard index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>City</th>
+                <th>Budget</th>
+                <th>Materials</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for yard in yards %}
+            <tr>
+                <td>{{ yard.id }}</td>
+                <td>{{ yard.city }}</td>
+                <td>{{ yard.budget }}</td>
+                <td>{{ yard.materials ? yard.materials|join(', ') : '' }}</td>
+                <td>{{ yard.date ? yard.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ yard.status }}</td>
+                <td>
+                    <a href="{{ path('app_yard_show', {'id': yard.id}) }}">show</a>
+                    <a href="{{ path('app_yard_edit', {'id': yard.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_yard_new') }}">Create new</a>
+{% endblock %}

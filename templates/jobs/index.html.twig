@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello JobsController!{% endblock %}
+
+{% block body %}
+
+<!--<section class="container-fluid justified mt-3" itemscope itemtype="https://schema.org/Person">-->
+  <section class="carousel" aria-labelledby="carouselheading">
+    <h3 id="carouselheading" class="visuallyhidden">Recent jobs</h3>
+    
+    <div class="container">
+      <div class="mySlides">
+        <div class="numbertext">1 / 6</div>
+          <img src="./images/abandonned_sanatorium5.png" alt="Abandonned sanatorium" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">2 / 6</div>
+          <img src="./images/misty_forest5.jpg" alt="Misty forest" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">3 / 6</div>
+          <img src="./images/plagued_forest4.jpg" alt="Plagued forest" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">3 / 6</div>
+          <img src="./images/forest1.jpg" alt="Eerie forest" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">3 / 6</div>
+          <img src="./images/forest2.jpg" alt="Grim forest" style="width:100%">
+      </div>
+
+      <div class="mySlides">
+        <div class="numbertext">3 / 6</div>
+          <img src="./images/forest3.jpg" alt="Gloomy forest" style="width:100%">
+      </div>
+    </div>
+
+    <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  <!-- Image text -->
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <!-- Thumbnail images -->
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor" src="./images/abandonned_sanatorium5.png" style="width:100%" onclick="currentSlide(1)" alt="Plagued sanatorium">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="./images/misty_forest5.jpg" style="width:100%" onclick="currentSlide(2)" alt="Misty forest">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="./images/plagued_forest4.jpg" style="width:100%" onclick="currentSlide(3)" alt="Plagued forest">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="./images/forest1.jpg" style="width:100%" onclick="currentSlide(4)" alt="Eerie forest">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="./images/forest2.jpg" style="width:100%" onclick="currentSlide(5)" alt="Grim forest">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="./images/forest3.jpg" style="width:100%" onclick="currentSlide(6)" alt="Gloomy forest">
+    </div>
+  </div>
+</div>
+  </section>
+
+{% endblock %}
