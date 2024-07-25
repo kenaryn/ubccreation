@@ -8,11 +8,11 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class JobsController extends AbstractController
 {
-    #[Route('/jobs', name: 'app_jobs')]
-    public function index(): Response
-    {
-        return $this->render('jobs/index.html.twig', [
-            'controller_name' => 'JobsController',
-        ]);
-    }
+   #[Route('/jobs', name: 'app_jobs')]
+   public function index(): Response
+   {
+      return $this->render('jobs/index.html.twig', [
+         'controller_name' => 'JobsController',
+      ]);
+   }
 }

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Yard{% endblock %}
+{% block title %}Chantier{% endblock %}
 
 {% block body %}
-    <h1>Yard</h1>
+    <h1>Chantier</h1>
 
     <table class="table">
         <tbody>
@@ -20,7 +20,7 @@
                 <td>{{ yard.budget }}</td>
             </tr>
             <tr>
-                <th>Materials</th>
+                <th>Materiaux</th>
                 <td>{{ yard.materials ? yard.materials|join(', ') : '' }}</td>
             </tr>
             <tr>
@@ -34,9 +34,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_yard_index') }}">back to list</a>
+    <a href="{{ path('app_yard_index') }}">retourner à la liste</a>
 
-    <a href="{{ path('app_yard_edit', {'id': yard.id}) }}">edit</a>
+    <a href="{{ path('app_yard_edit', {'id': yard.id}) }}">éditer</a>
 
     {{ include('yard/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Yard{% endblock %}
+{% block title %}Nouveau chantier{% endblock %}
 
 {% block body %}
-    <h1>Create new Yard</h1>
+    <h1>Créer un nouveau chantier</h1>
 
     {{ include('yard/_form.html.twig') }}
 
-    <a href="{{ path('app_yard_index') }}">back to list</a>
+    <a href="{{ path('app_yard_index') }}">retourner à la liste</a>
 {% endblock %}

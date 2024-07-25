@@ -1,10 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomepageController!{% endblock %}
+{% block title %}UBC Création - Accueil{% endblock %}
 
 {% block body %}
-
-    
 
 <header class="d-flex align-items-center m-2">
   <a href="./index.html"><img src="./design/logo.png" alt="UBC Création" class="p-3" /></a>
@@ -14,32 +12,14 @@
   </div>
 </header>
 
-<div class="container sticky-top">
-  <div class="row">
-    <div class="col-3"></div>
-    <div class="col-6">
-    {{ include ('homepage/menu.html.twig' )}}
-    </div>
-    <div class="col-3"></div>
-  </div>
-</div>
-<!-- END of header and navigational content -->
+
+{{ include('homepage/navbar.html.twig' )}}
+    
 
 <main>
-  
+
 </main>
 
+{{ include('homepage/footer.html.twig') }}
 
-<!-- START of footer content-->
-<footer class="card-footer text-center text-body-secondary pt-4" itemscope itemtype="https://schema.org/Person">
-  <ul class="nav navbar-nav">
-    <li><a href="mailto:ubccreation@yahoo.fr" class="text-decoration-none link-secondary" itemprop="email">ubccreation@yahoo.fr</a></li>
-    <li><a href="tel:+33628477755" class="text-decoration-none link-secondary" itemprop="telephone">06 28 47 77 55</a></li>
-    <li><a href="./legal_notice.html" class="text-decoration-none link-secondary">Mentions légales</a></li>
-  </ul>
-
-  <div class="card-footer text-body-secondary" itemscope itemtype="https://schema.org/Organization">
-    <p itemprop="copyrightHolder">©2023 • UBC Création • Tous droits réservés</p>
-  </div>
-</footer>
 {% endblock %}

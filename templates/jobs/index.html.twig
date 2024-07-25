@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello JobsController!{% endblock %}
+{% block title %}Chantiers{% endblock %}
 
 {% block body %}
+
+{{ include('homepage/navbar.html.twig') }}
 
 <!--<section class="container-fluid justified mt-3" itemscope itemtype="https://schema.org/Person">-->
   <section class="carousel" aria-labelledby="carouselheading">
@@ -11,7 +13,7 @@
     <div class="container">
       <div class="mySlides">
         <div class="numbertext">1 / 6</div>
-          <img src="./images/abandonned_sanatorium5.png" alt="Abandonned sanatorium" style="width:100%">
+          <img src="assets/images/abandonned_sanatorium5.png" alt="Abandonned sanatorium" style="width:100%">
       </div>
 
       <div class="mySlides">
@@ -72,5 +74,7 @@
   </div>
 </div>
   </section>
+
+{{ include('homepage/footer.html.twig') }}
 
 {% endblock %}

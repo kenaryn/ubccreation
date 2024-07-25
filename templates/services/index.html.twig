@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Activités{% endblock %}
+
+{% block body %}
+
+  {{ include ('homepage/navbar.html.twig' )}}
+
+<main>
+  <section class="container-fluid m-3">
+
+    <article>
+      <div class="row">
+        <div class="col">
+          <div class="card text-bg-dark p-3" style="max-width: 90%;">
+            <img src="./design/services_building_site.png" class="card-img-top" alt="Projets de construction" />
+            <h3 class="card-title text-center p-2">Projets de construction</h3>
+
+            <p class="card-text"><em>UBC Création</em> réalise une large gamme de travaux pour satisfaire vos ambitions et nourrir vos projets créatifs:</p>
+            
+            <ul>
+              <li>Construction de maisons individuelles</li>
+              <li>Maçonnerie générale tous corps d'état</li>
+              <li>Gros oeuvre</li>
+              <li>Aménagement d'intérieur et extérieur</li>
+              <li>Isolation</li>
+              <li>Aire de jeux</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col">
+        <div class="card text-bg-dark p-3" style="max-width: 90%;">
+          <img src="./design/services_renovation.png" class="card-img-top" alt="Projets de rénovation" />
+          <h3 class="card-title text-center p-2">Projets de rénovation</h3>
+          
+          <p class="card-text">Pensez à <em>UBC Création</em> pour tous vos projets de rénovation:</p>
+          
+          <ul>
+            <li>Habitations</li>
+            <li>Aires de jeux existantes</li>
+            <li>Salles de conférence</li>
+            <li>Salle des fêtes</li>
+            <li>Salle de réunion</li>
+            <li>Théâtres</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </article>
+  </section>
+</main>
+
+{{ include('homepage/footer.html.twig') }}
+
+{% endblock %}
