@@ -13,7 +13,6 @@
                 <th>Budget</th>
                 <th>Materiaux</th>
                 <th>Date de création</th>
-                <th>Status</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -25,7 +24,6 @@
                 <td>{{ yard.budget }}</td>
                 <td>{{ yard.materials ? yard.materials|join(', ') : '' }}</td>
                 <td>{{ yard.date ? yard.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ yard.status }}</td>
                 <td>
                     <a href="{{ path('app_yard_show', {'id': yard.id}) }}">show</a>
                     <a href="{{ path('app_yard_edit', {'id': yard.id}) }}">edit</a>

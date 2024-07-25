@@ -40,6 +40,9 @@ class Yard
     #[ORM\ManyToOne(inversedBy: 'claims')]
     private ?User $user = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $materials = null;
+
 
     public function __construct()
     {
@@ -141,6 +144,18 @@ class Yard
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getMaterials(): ?string
+    {
+        return $this->materials;
+    }
+
+    public function setMaterials(?string $materials): static
+    {
+        $this->materials = $materials;
 
         return $this;
     }
