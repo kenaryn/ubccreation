@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Yard;
+use App\Entity\Proposal;
 use App\Form\YardType;
 use App\Repository\YardRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,9 +20,9 @@ class YardController extends AbstractController
     public function index(YardRepository $yardRepository): Response
     {
         //uniquement ceux de l'utilisateur
-    $user = $this->getUser();
+        $user = $this->getUser();
         return $this->render('yard/index.html.twig', [
-            'yards' => $yardRepository->findBy(['user'=>$user]),
+            'yards' => $yardRepository->findBy(['user' => $user]),
         ]);
     }
 
@@ -32,6 +34,9 @@ class YardController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $yard->setCreationDate(new DateTimeImmutable());
+            $yard->setUser($this->getUser());
+            $yard->setProposal(Proposal::Estimate);
             $entityManager->persist($yard);
             $entityManager->flush();
 
@@ -73,7 +78,7 @@ class YardController extends AbstractController
     #[Route('/{id}', name: 'app_yard_delete', methods: ['POST'])]
     public function delete(Request $request, Yard $yard, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$yard->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $yard->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($yard);
             $entityManager->flush();
         }

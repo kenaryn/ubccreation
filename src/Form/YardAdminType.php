@@ -18,7 +18,7 @@ class YardAdminType extends AbstractType
             ->add('city')
             ->add('budget')
             ->add('user')
-            ->add('date', null, [
+            ->add('projectDate', null, [
                 'widget' => 'single_text'
             ])
             ->add('proposal', EnumType::class, ['class' => Proposal::class])

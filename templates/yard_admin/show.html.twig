@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chantier{% endblock %}
+
+{% block body %}
+    <h1>Chantier</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ yard.id }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ yard.city }}</td>
+            </tr>
+            <tr>
+                <th>Budget</th>
+                <td>{{ yard.budget }}</td>
+            </tr>
+            <tr>
+                <th>Materiaux</th>
+                <td>{{ yard.materials ? yard.materials|join(', ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ yard.date ? yard.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_yard_index') }}">retourner à la liste</a>
+
+    <a href="{{ path('app_yard_edit', {'id': yard.id}) }}">éditer</a>
+
+    {{ include('yard/_delete_form.html.twig') }}
+{% endblock %}

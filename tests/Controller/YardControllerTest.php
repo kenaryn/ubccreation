@@ -50,8 +50,7 @@ class YardControllerTest extends WebTestCase
             'yard[city]' => 'Testing',
             'yard[budget]' => 'Testing',
             'yard[materials]' => 'Testing',
-            'yard[date]' => 'Testing',
-            'yard[status]' => 'Testing',
+            'yard[projectDate]' => 'Testing',
         ]);
 
         self::assertResponseRedirects($this->path);
@@ -66,8 +65,7 @@ class YardControllerTest extends WebTestCase
         $fixture->setCity('My Title');
         $fixture->setBudget('My Title');
         $fixture->setMaterials('My Title');
-        $fixture->setDate('My Title');
-        $fixture->setStatus('My Title');
+        $fixture->setProjectDate(new \DateTimeImmutable());
 
         $this->manager->persist($fixture);
         $this->manager->flush();

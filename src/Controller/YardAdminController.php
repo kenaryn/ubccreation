@@ -18,7 +18,7 @@ class YardAdminController extends AbstractController
     #[Route('/', name: 'app_yard_admin_index', methods: ['GET'])]
     public function index(YardRepository $yardRepository): Response
     {
-        return $this->render('yard/index.html.twig', [
+        return $this->render('yard_admin/index.html.twig', [
             'yards' => $yardRepository->findAll(),
         ]);
     }
@@ -38,7 +38,7 @@ class YardAdminController extends AbstractController
             return $this->redirectToRoute('app_yard_admin_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('yard/new.html.twig', [
+        return $this->render('yard_admin/new.html.twig', [
             'yard' => $yard,
             'form' => $form,
         ]);
@@ -47,7 +47,7 @@ class YardAdminController extends AbstractController
     #[Route('/{id}', name: 'app_yard_admin_show', methods: ['GET'])]
     public function show(Yard $yard): Response
     {
-        return $this->render('yard/show.html.twig', [
+        return $this->render('yard_admin/show.html.twig', [
             'yard' => $yard,
         ]);
     }
@@ -64,7 +64,7 @@ class YardAdminController extends AbstractController
             return $this->redirectToRoute('app_yard_admin_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('yard/edit.html.twig', [
+        return $this->render('yard_admin/edit.html.twig', [
             'yard' => $yard,
             'form' => $form,
         ]);

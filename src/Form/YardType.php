@@ -16,8 +16,11 @@ class YardType extends AbstractType
         $builder
             ->add('city')
             ->add('budget')
-            ->add('date', null, [
-                'widget' => 'single_text'
+            ->add('projectDate', null, [
+                'widget' => 'single_text',
+                'attr' => array(
+                    'min' => (new \DateTimeImmutable())->format('Y-m-d')
+                )
             ])
             ->add('urgency', EnumType::class, ['class' => Urgency::class]);
     }

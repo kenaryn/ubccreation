@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\YardRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,8 +20,8 @@ class Yard
     #[ORM\Column(nullable: true)]
     private ?int $budget = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $date = null;
+    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    private ?\DateTimeImmutable $projectDate = null;
 
     #[ORM\Column(type: "string", enumType: Proposal::class)]
     private ?Proposal $proposal;
@@ -100,14 +98,14 @@ class Yard
     }
 
 
-    public function getDate(): ?\DateTimeImmutable
+    public function getProjectDate(): ?\DateTimeImmutable
     {
-        return $this->date;
+        return $this->projectDate;
     }
 
-    public function setDate(\DateTimeImmutable $date): static
+    public function setProjectDate(\DateTimeImmutable $projectDate): static
     {
-        $this->date = $date;
+        $this->projectDate = $projectDate;
 
         return $this;
     }
