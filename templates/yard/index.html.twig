@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Yard index{% endblock %}
+{% block title %}Index des chantiers{% endblock %}
 
 {% block body %}
-    <h1>Yard index</h1>
+    <h1>Index des chantiers</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>City</th>
+                <th>Identifiant</th>
+                <th>Commune</th>
                 <th>Budget</th>
-                <th>Materials</th>
-                <th>Date</th>
+                <th>Materiaux</th>
+                <th>Date de création</th>
                 <th>Status</th>
                 <th>actions</th>
             </tr>
@@ -33,11 +33,11 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">Aucun devis ni facture n'existe pour le moment.</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_yard_new') }}">Create new</a>
+    <a href="{{ path('app_yard_new') }}">Créer un devis</a>
 {% endblock %}

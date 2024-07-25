@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\YardRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,9 +22,6 @@ class Yard
     #[ORM\Column(nullable: true)]
     private ?int $budget = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    private ?array $materials = null;
-
     #[ORM\Column]
     private ?\DateTimeImmutable $date = null;
 
@@ -32,23 +31,40 @@ class Yard
     #[ORM\Column(type: "string", enumType: Urgency::class)]
     private ?Urgency $urgency;
 
-    public function getProposal(): ?string
+    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    private ?\DateTimeImmutable $creationDate = null;
+
+    #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
+    private ?\DateTimeImmutable $editionDate = null;
+
+    /**
+     * @var Collection<int, User>
+     */
+    #[ORM\OneToMany(targetEntity: User::class, mappedBy: 'claimedBy')]
+    private Collection $claim;
+
+    public function __construct()
+    {
+        $this->claim = new ArrayCollection();
+    }
+
+    public function getProposal(): ?Proposal
     {
         return $this->proposal;
     }
 
-    public function setProposal(string $proposal): static
+    public function setProposal(Proposal $proposal): static
     {
         $this->proposal = $proposal;
         return $this;
     }
 
-    public function getUrgency(): ?string
+    public function getUrgency(): ?Urgency
     {
         return $this->urgency;
     }
 
-    public function setUrgency(string $urgency): static
+    public function setUrgency(Urgency $urgency): static
     {
         $this->urgency = $urgency;
         return $this;
@@ -83,17 +99,6 @@ class Yard
         return $this;
     }
 
-    public function getMaterials(): ?array
-    {
-        return $this->materials;
-    }
-
-    public function setMaterials(?array $materials): static
-    {
-        $this->materials = $materials;
-
-        return $this;
-    }
 
     public function getDate(): ?\DateTimeImmutable
     {
@@ -103,6 +108,60 @@ class Yard
     public function setDate(\DateTimeImmutable $date): static
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getCreationDate(): ?\DateTimeImmutable
+    {
+        return $this->creationDate;
+    }
+
+    public function setCreationDate(\DateTimeImmutable $creationDate): static
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    public function getEditionDate(): ?\DateTimeImmutable
+    {
+        return $this->editionDate;
+    }
+
+    public function setEditionDate(?\DateTimeImmutable $editionDate): static
+    {
+        $this->editionDate = $editionDate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getClaim(): Collection
+    {
+        return $this->claim;
+    }
+
+    public function addClaim(User $claim): static
+    {
+        if (!$this->claim->contains($claim)) {
+            $this->claim->add($claim);
+            $claim->setClaimedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClaim(User $claim): static
+    {
+        if ($this->claim->removeElement($claim)) {
+            // set the owning side to null (unless already changed)
+            if ($claim->getClaimedBy() === $this) {
+                $claim->setClaimedBy(null);
+            }
+        }
 
         return $this;
     }
