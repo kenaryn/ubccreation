@@ -37,15 +37,12 @@ class Yard
     #[ORM\Column(type: Types::DATE_IMMUTABLE, nullable: true)]
     private ?\DateTimeImmutable $editionDate = null;
 
-    /**
-     * @var Collection<int, User>
-     */
-    #[ORM\OneToMany(targetEntity: User::class, mappedBy: 'claim')]
-    private Collection $claimedBy;
+    #[ORM\ManyToOne(inversedBy: 'claims')]
+    private ?User $user = null;
+
 
     public function __construct()
     {
-        $this->claimedBy = new ArrayCollection();
     }
 
     public function getProposal(): ?Proposal
@@ -136,32 +133,14 @@ class Yard
         return $this;
     }
 
-    /**
-     * @return Collection<int, User>
-     */
-    public function getClaim(): Collection
+    public function getUser(): ?User
     {
-        return $this->claim;
+        return $this->user;
     }
 
-    public function addClaim(User $claim): static
+    public function setUser(?User $user): static
     {
-        if (!$this->claim->contains($claim)) {
-            $this->claim->add($claim);
-            $claim->setClaimedBy($this);
-        }
-
-        return $this;
-    }
-
-    public function removeClaim(User $claim): static
-    {
-        if ($this->claim->removeElement($claim)) {
-            // set the owning side to null (unless already changed)
-            if ($claim->getClaimedBy() === $this) {
-                $claim->setClaimedBy(null);
-            }
-        }
+        $this->user = $user;
 
         return $this;
     }

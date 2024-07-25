@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -33,9 +35,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\ManyToOne(inversedBy: 'claimedBy')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Yard $claim = null;
+    /**
+     * @var Collection<int, Yard>
+     */
+    #[ORM\OneToMany(targetEntity: Yard::class, mappedBy: 'user')]
+    private Collection $claims;
+
+    public function __construct()
+    {
+        $this->claims = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -112,14 +121,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getClaim(): ?Yard
+    /**
+     * @return Collection<int, Yard>
+     */
+    public function getClaims(): Collection
     {
-        return $this->claim;
+        return $this->claims;
     }
 
-    public function setClaim(?Yard $claim): static
+    public function addClaim(Yard $claim): static
     {
-        $this->claim = $claim;
+        if (!$this->claims->contains($claim)) {
+            $this->claims->add($claim);
+            $claim->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClaim(Yard $claim): static
+    {
+        if ($this->claims->removeElement($claim)) {
+            // set the owning side to null (unless already changed)
+            if ($claim->getUser() === $this) {
+                $claim->setUser(null);
+            }
+        }
 
         return $this;
     }
