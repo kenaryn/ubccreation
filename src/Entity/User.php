@@ -33,9 +33,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\ManyToOne(inversedBy: 'claim')]
+    #[ORM\ManyToOne(inversedBy: 'claimedBy')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Yard $claimedBy = null;
+    private ?Yard $claim = null;
 
     public function getId(): ?int
     {
@@ -112,14 +112,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getClaimedBy(): ?Yard
+    public function getClaim(): ?Yard
     {
-        return $this->claimedBy;
+        return $this->claim;
     }
 
-    public function setClaimedBy(?Yard $claimedBy): static
+    public function setClaim(?Yard $claim): static
     {
-        $this->claimedBy = $claimedBy;
+        $this->claim = $claim;
 
         return $this;
     }

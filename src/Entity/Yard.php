@@ -40,12 +40,12 @@ class Yard
     /**
      * @var Collection<int, User>
      */
-    #[ORM\OneToMany(targetEntity: User::class, mappedBy: 'claimedBy')]
-    private Collection $claim;
+    #[ORM\OneToMany(targetEntity: User::class, mappedBy: 'claim')]
+    private Collection $claimedBy;
 
     public function __construct()
     {
-        $this->claim = new ArrayCollection();
+        $this->claimedBy = new ArrayCollection();
     }
 
     public function getProposal(): ?Proposal
