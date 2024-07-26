@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index des actualités{% endblock %}
+
+{% block body %}
+    <h1>Index des actualités</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Identifiant</th>
+                <th>Titre</th>
+                <th>Corps du message</th>
+                <th>Date de publication</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for news in news %}
+            <tr>
+                <td>{{ news.id }}</td>
+                <td>{{ news.title }}</td>
+                <td>{{ news.body }}</td>
+                <td>{{ news.postDate ? news.postDate|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_news_show', {'id': news.id}) }}">Afficher</a>
+                    <a href="{{ path('app_news_edit', {'id': news.id}) }}">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucune actualité trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_news_new') }}">Créer une actualité</a>
+{% endblock %}

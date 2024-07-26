@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New TypeSite{% endblock %}
+{% block title %}Nouveau dtype de chantier{% endblock %}
 
 {% block body %}
-    <h1>Create new TypeSite</h1>
+    <h1>Créer un type de chantier</h1>
 
     {{ include('type_site/_form.html.twig') }}
 
-    <a href="{{ path('app_type_site_index') }}">back to list</a>
+    <a href="{{ path('app_type_site_index') }}">Retour à la liste</a>
 {% endblock %}

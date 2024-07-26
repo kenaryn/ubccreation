@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit TypeSite{% endblock %}
+{% block title %}Editer un type de chantier{% endblock %}
 
 {% block body %}
-    <h1>Edit TypeSite</h1>
+    <h1>Editer un type de chantier</h1>
 
     {{ include('type_site/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_type_site_index') }}">back to list</a>
+    <a href="{{ path('app_type_site_index') }}">Retour à la liste</a>
 
     {{ include('type_site/_delete_form.html.twig') }}
 {% endblock %}
