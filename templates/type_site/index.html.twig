@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypeSite index{% endblock %}
+
+{% block body %}
+    <h1>TypeSite index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>LabelSite</th>
+                <th>TeamSize</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_site in type_sites %}
+            <tr>
+                <td>{{ type_site.id }}</td>
+                <td>{{ type_site.labelSite }}</td>
+                <td>{{ type_site.teamSize }}</td>
+                <td>
+                    <a href="{{ path('app_type_site_show', {'id': type_site.id}) }}">show</a>
+                    <a href="{{ path('app_type_site_edit', {'id': type_site.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_type_site_new') }}">Create new</a>
+{% endblock %}

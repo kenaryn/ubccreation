@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypeSite{% endblock %}
+
+{% block body %}
+    <h1>TypeSite</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ type_site.id }}</td>
+            </tr>
+            <tr>
+                <th>LabelSite</th>
+                <td>{{ type_site.labelSite }}</td>
+            </tr>
+            <tr>
+                <th>TeamSize</th>
+                <td>{{ type_site.teamSize }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_type_site_index') }}">back to list</a>
+
+    <a href="{{ path('app_type_site_edit', {'id': type_site.id}) }}">edit</a>
+
+    {{ include('type_site/_delete_form.html.twig') }}
+{% endblock %}

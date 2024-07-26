@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240725120547 extends AbstractMigration
+final class Version20240726134549 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,14 @@ final class Version20240725120547 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE yard ADD project_date DATE NOT NULL COMMENT \'(DC2Type:date_immutable)\', DROP date');
+        $this->addSql('ALTER TABLE yard ADD CONSTRAINT FK_29B02F28DE9C79B3 FOREIGN KEY (type_site_id) REFERENCES type_site (id)');
+        $this->addSql('CREATE INDEX IDX_29B02F28DE9C79B3 ON yard (type_site_id)');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE yard ADD date DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', DROP project_date');
+        $this->addSql('ALTER TABLE yard DROP FOREIGN KEY FK_29B02F28DE9C79B3');
+        $this->addSql('DROP INDEX IDX_29B02F28DE9C79B3 ON yard');
     }
 }

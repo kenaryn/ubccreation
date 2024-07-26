@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\TypeSite;
 use App\Entity\Yard;
 use App\Entity\Urgency;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,6 +17,8 @@ class YardType extends AbstractType
     {
         $builder
             ->add('city')
+            ->add('typeSite',EntityType::class,[
+                'class' => TypeSite::class])
             ->add('budget')
             ->add('projectDate', null, [
                 'widget' => 'single_text',

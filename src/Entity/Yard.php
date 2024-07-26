@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\YardRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -40,6 +42,10 @@ class Yard
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $materials = null;
+
+    #[ORM\ManyToOne(inversedBy: 'describes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?TypeSite $typeSite = null;
 
 
     public function __construct()
@@ -154,6 +160,18 @@ class Yard
     public function setMaterials(?string $materials): static
     {
         $this->materials = $materials;
+
+        return $this;
+    }
+
+    public function getTypeSite(): ?TypeSite
+    {
+        return $this->typeSite;
+    }
+
+    public function setTypeSite(?TypeSite $typeSite): static
+    {
+        $this->typeSite = $typeSite;
 
         return $this;
     }

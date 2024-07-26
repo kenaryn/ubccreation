@@ -110,5 +110,9 @@ body {
  }
 
  .img-cover {
-   
+   max-height: 40%;
+ }
+
+ input:focus {
+   background: linear-gradient(to bottom, #ff3300 0%, #ff6666 100%);
  }
