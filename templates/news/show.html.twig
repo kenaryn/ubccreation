@@ -8,20 +8,20 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>Identifiant</th>
                 <td>{{ news.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <th>Titre</th>
                 <td>{{ news.title }}</td>
             </tr>
             <tr>
-                <th>Body</th>
+                <th>Corps du message</th>
                 <td>{{ news.body }}</td>
             </tr>
             <tr>
-                <th>PostDate</th>
-                <td>{{ news.postDate ? news.postDate|date('Y-m-d') : '' }}</td>
+                <th>Date de publication</th>
+                <td>{{ news.postDate ? news.postDate|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>

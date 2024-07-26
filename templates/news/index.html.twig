@@ -21,7 +21,7 @@
                 <td>{{ news.id }}</td>
                 <td>{{ news.title }}</td>
                 <td>{{ news.body }}</td>
-                <td>{{ news.postDate ? news.postDate|date('Y-m-d') : '' }}</td>
+                <td>{{ news.postDate ? news.postDate|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('app_news_show', {'id': news.id}) }}">Afficher</a>
                     <a href="{{ path('app_news_edit', {'id': news.id}) }}">Editer</a>

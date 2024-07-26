@@ -63,7 +63,7 @@ class NewsControllerTest extends WebTestCase
         $fixture = new News();
         $fixture->setTitle('My Title');
         $fixture->setBody('My Title');
-        $fixture->setPostDate('My Title');
+        $fixture->setPostDate(new \DateTimeImmutable());
 
         $this->manager->persist($fixture);
         $this->manager->flush();
@@ -82,7 +82,7 @@ class NewsControllerTest extends WebTestCase
         $fixture = new News();
         $fixture->setTitle('Value');
         $fixture->setBody('Value');
-        $fixture->setPostDate('Value');
+        $fixture->setPostDate(new \DateTimeImmutable());
 
         $this->manager->persist($fixture);
         $this->manager->flush();
@@ -110,7 +110,7 @@ class NewsControllerTest extends WebTestCase
         $fixture = new News();
         $fixture->setTitle('Value');
         $fixture->setBody('Value');
-        $fixture->setPostDate('Value');
+        $fixture->setPostDate(new \DateTimeImmutable());
 
         $this->manager->persist($fixture);
         $this->manager->flush();

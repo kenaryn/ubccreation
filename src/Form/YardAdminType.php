@@ -17,7 +17,6 @@ class YardAdminType extends AbstractType
         $builder
             ->add('city')
             ->add('budget')
-            ->add('user')
             ->add('projectDate', null, [
                 'widget' => 'single_text'
             ])

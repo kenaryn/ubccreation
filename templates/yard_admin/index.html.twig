@@ -23,7 +23,7 @@ ADMIN
                 <td>{{ yard.city }}</td>
                 <td>{{ yard.budget }}</td>
                 <td>{{ yard.materials ? yard.materials|join(', ') : '' }}</td>
-                <td>{{ yard.projectDate ? yard.projectDate|date('Y-m-d') : '' }}</td>
+                <td>{{ yard.projectDate ? yard.projectDate|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('app_yard_admin_show', {'id': yard.id}) }}">Afficher</a>
                     <a href="{{ path('app_yard_admin_edit', {'id': yard.id}) }}">Editer</a>

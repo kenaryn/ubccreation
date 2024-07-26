@@ -20,6 +20,7 @@ class YardType extends AbstractType
             ->add('typeSite',EntityType::class,[
                 'class' => TypeSite::class])
             ->add('budget')
+            ->add('materials')
             ->add('projectDate', null, [
                 'widget' => 'single_text',
                 'attr' => array(
