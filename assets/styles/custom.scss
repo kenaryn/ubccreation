@@ -1,6 +1,7 @@
 body {
    height: 150vh;
    background: linear-gradient(to top left, antiquewhite, rgb(181, 169, 153));
+   font: small 'Lucida Bright', monospace;
  }
  
  .justified {
@@ -116,3 +117,12 @@ body {
  input:focus {
    background: linear-gradient(to bottom, #ff3300 0%, #ff6666 100%);
  }
+
+ a {
+  text-decoration: none;
+}
+
+ol, ul {
+   list-style-type: none;
+   padding: 0.4rem 0.6rem;
+}

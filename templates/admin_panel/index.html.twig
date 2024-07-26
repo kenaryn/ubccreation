@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panneau d'administration{% endblock %}
+
+{% block body %}
+
+<h3>Panneau d'administration</h3>
+
+<ul>
+    <li class="panel"><a href="{{ path('app_yard_admin_index') }}">Gérer les chantiers</a>
+    <li class="panel"><a href="{{ path('app_type_site_admin_index') }}">Gérer les types de chantier</a>
+</ul>
+
+{% endblock %}

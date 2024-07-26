@@ -22,9 +22,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_type_site_index') }}">Retour à la liste</a>
+    <a href="{{ path('app_type_site_admin_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_type_site_edit', {'id': type_site.id}) }}">Editer</a>
+    <a href="{{ path('app_type_site_admin_edit', {'id': type_site.id}) }}">Editer</a>
 
     {{ include('type_site/_delete_form.html.twig') }}
 {% endblock %}

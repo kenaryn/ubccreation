@@ -21,8 +21,8 @@
                 <td>{{ type_site.labelSite }}</td>
                 <td>{{ type_site.teamSize }}</td>
                 <td>
-                    <a href="{{ path('app_type_site_show', {'id': type_site.id}) }}">Afficher</a>
-                    <a href="{{ path('app_type_site_edit', {'id': type_site.id}) }}">Editer</a>
+                    <a href="{{ path('app_type_site_admin_show', {'id': type_site.id}) }}">Afficher</a>
+                    <a href="{{ path('app_type_site_admin_edit', {'id': type_site.id}) }}">Editer</a>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_type_site_new') }}">Créer un type de chantier</a>
+    <a href="{{ path('app_type_site_admin_new') }}">Créer un type de chantier</a>
 {% endblock %}
