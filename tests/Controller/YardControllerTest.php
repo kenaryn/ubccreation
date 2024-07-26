@@ -85,8 +85,7 @@ class YardControllerTest extends WebTestCase
         $fixture->setCity('Value');
         $fixture->setBudget('Value');
         $fixture->setMaterials('Value');
-        $fixture->setDate('Value');
-        $fixture->setStatus('Value');
+        $fixture->setProjectDate(new \DateTimeImmutable());
 
         $this->manager->persist($fixture);
         $this->manager->flush();
@@ -119,8 +118,7 @@ class YardControllerTest extends WebTestCase
         $fixture->setCity('Value');
         $fixture->setBudget('Value');
         $fixture->setMaterials('Value');
-        $fixture->setDate('Value');
-        $fixture->setStatus('Value');
+        $fixture->setProjectDate(new \DateTimeImmutable());
 
         $this->manager->persist($fixture);
         $this->manager->flush();

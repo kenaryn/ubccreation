@@ -23,7 +23,7 @@
                   {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <p class="nav-link">{{ app.user.email }}</p>
                     <li>
-                        <a class="nav-link" class="link-secondary btn btn-primary btn-lg w-75 m-1 pl-5 pr-5 fs-1" href="{{ path('app_logout') }}">
+                        <a class="nav-link" href="{{ path('app_logout') }}">
                         Se déconnecter</a>
                     </li>
 

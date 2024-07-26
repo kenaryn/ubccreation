@@ -4,39 +4,39 @@
 
 {% block body %}
 
-<!--<section class="container-fluid justified mt-3" itemscope itemtype="https://schema.org/Person">-->
+{# <!--<section class="container-fluid justified mt-3" itemscope itemtype="https://schema.org/Person">-->
   <section class="carousel" aria-labelledby="carouselheading">
     <h3 id="carouselheading" class="visuallyhidden">Recent jobs</h3>
     
     <div class="container">
       <div class="mySlides">
         <div class="numbertext">1 / 6</div>
-          <img src="assets/images/abandonned_sanatorium5.png" alt="Abandonned sanatorium" style="width:100%">
+          <img src="{{ asset('../assets/images/abandonned_sanatorium5.png') }}" alt="Abandonned sanatorium" style="width:100%">
       </div>
 
       <div class="mySlides">
         <div class="numbertext">2 / 6</div>
-          <img src="./images/misty_forest5.jpg" alt="Misty forest" style="width:100%">
+          <img src="{{ asset('../assets/images/misty_forest5.jpg') }}" alt="Misty forest" style="width:100%">
       </div>
 
       <div class="mySlides">
         <div class="numbertext">3 / 6</div>
-          <img src="./images/plagued_forest4.jpg" alt="Plagued forest" style="width:100%">
+          <img src="{{ asset('../assets/images/plagued_forest4.jpg') }}" alt="Plagued forest" style="width:100%">
       </div>
 
       <div class="mySlides">
         <div class="numbertext">3 / 6</div>
-          <img src="./images/forest1.jpg" alt="Eerie forest" style="width:100%">
+          <img src="{{ asset('../assets/images/forest1.jpg') }}" alt="Eerie forest" style="width:100%">
       </div>
 
       <div class="mySlides">
         <div class="numbertext">3 / 6</div>
-          <img src="./images/forest2.jpg" alt="Grim forest" style="width:100%">
+          <img src="{{ asset('../assets/images/forest2.jpg') }}" alt="Grim forest" style="width:100%">
       </div>
 
       <div class="mySlides">
         <div class="numbertext">3 / 6</div>
-          <img src="./images/forest3.jpg" alt="Gloomy forest" style="width:100%">
+          <img src="{{ asset('../assets/images/forest3.jpg') }}" alt="Gloomy forest" style="width:100%">
       </div>
     </div>
 
@@ -52,25 +52,93 @@
   <!-- Thumbnail images -->
   <div class="row">
     <div class="column">
-      <img class="demo cursor" src="./images/abandonned_sanatorium5.png" style="width:100%" onclick="currentSlide(1)" alt="Plagued sanatorium">
+      <img class="demo cursor" src="{{ asset('../assets/images/abandonned_sanatorium5.png') }}" style="width:100%" onclick="currentSlide(1)" alt="Plagued sanatorium">
     </div>
     <div class="column">
-      <img class="demo cursor" src="./images/misty_forest5.jpg" style="width:100%" onclick="currentSlide(2)" alt="Misty forest">
+      <img class="demo cursor" src="{{ asset('../assets/images/misty_forest5.jpg') }}" style="width:100%" onclick="currentSlide(2)" alt="Misty forest">
     </div>
     <div class="column">
-      <img class="demo cursor" src="./images/plagued_forest4.jpg" style="width:100%" onclick="currentSlide(3)" alt="Plagued forest">
+      <img class="demo cursor" src="{{ asset('../assets/images/plagued_forest4.jpg') }}" style="width:100%" onclick="currentSlide(3)" alt="Plagued forest">
     </div>
     <div class="column">
-      <img class="demo cursor" src="./images/forest1.jpg" style="width:100%" onclick="currentSlide(4)" alt="Eerie forest">
+      <img class="demo cursor" src="{{ asset('../assets/images/forest1.jpg') }}" style="width:100%" onclick="currentSlide(4)" alt="Eerie forest">
     </div>
     <div class="column">
-      <img class="demo cursor" src="./images/forest2.jpg" style="width:100%" onclick="currentSlide(5)" alt="Grim forest">
+      <img class="demo cursor" src="{{ asset('../assets/images/forest2.jpg') }}" style="width:100%" onclick="currentSlide(5)" alt="Grim forest">
     </div>
     <div class="column">
-      <img class="demo cursor" src="./images/forest3.jpg" style="width:100%" onclick="currentSlide(6)" alt="Gloomy forest">
+      <img class="demo cursor" src="{{ asset('../assets/images/forest3.jpg') }}" style="width:100%" onclick="currentSlide(6)" alt="Gloomy forest">
     </div>
   </div>
 </div>
+  </section> #}
+
+  <section>
+    <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-current="true" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-current="true" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carousel" data-bs-slide-to="3" aria-current="true" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="4" aria-current="true" aria-label="Slide 5"></button>
+              <button type="button" data-bs-target="#carousel" data-bs-slide-to="5" aria-current="true" aria-label="Slide 6"></button>
+      </div>
+
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{{ asset('../assets/images/abandonned_sanatorium5.png') }}" class="d-block w-100" alt="Plagued sanatorium">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Première photo</h5>
+            <p>Sanatorium abandonné</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{{ asset('../assets/images/misty_forest5.jpg') }}" class="d-block w-100" alt="Misty forest">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Deuxième photo</h5>
+            <p>Forêt brumeuse</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{{ asset('../assets/images/plagued_forest4.jpg') }}" class="d-block w-100" alt="Plagued forest">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Troisième photo</h5>
+            <p>Forêt pestilentielle</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{{ asset('../assets/images/forest1.jpg') }}" class="d-block w-100" alt="Eerie forest">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Quatrième photo</h5>
+            <p>Forêt menaçante</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{{ asset('../assets/images/forest2.jpg') }}" class="d-block w-100" alt="Grim forest">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Cinquième photo</h5>
+            <p>Forêt sinistre</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="{{ asset('../assets/images/forest3.jpg') }}" class="d-block w-100" alt="Gloomy forest">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Sixième photo</h5>
+            <p>Forêt lugubre</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+
+      <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
   </section>
 
 {% endblock %}

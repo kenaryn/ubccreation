@@ -12,6 +12,7 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22>
         <text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 
         fill=%22%23fff%22>sf</text></svg>">
+        <!--TODO: find another icon-->
 
         {% block stylesheets %}
         {% endblock %}
@@ -20,21 +21,20 @@
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
-    <body>
-    <header class="d-flex align-items-center m-2">
-  <a href="./index.html"><img src="./design/logo.png" alt="UBC Création" class="p-3" /></a>
-  <div class="flex-directions-column">
-    <h1>UBC CREATION</h1>
+
+<body>
+  <header class="d-flex align-items-center m-2">
+    <a href="./index.html"><img src="{{ asset('./design/logo.png') }}" alt="UBC Création" class="p-3" /></a>
+    <div class="flex-directions-column">
+      <h1>UBC CREATION</h1>
     <h3>Constructeur de maison individuelles</h3>
-  </div>
-</header>
+    </div>
+  </header>
 
-
-{{ include('homepage/navbar.html.twig' )}}
+  {{ include('homepage/navbar.html.twig' )}}
     
-
-        {% block body %}{% endblock %}
-    </body>
+    {% block body %}{% endblock %}
+</body>
 
 {{ include('homepage/footer.html.twig') }}
 
