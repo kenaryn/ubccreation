@@ -1,6 +1,6 @@
 body {
    height: 150vh;
-   background: linear-gradient(to top left, antiquewhite, rgb(158, 154, 150));
+   background: linear-gradient(to top left, antiquewhite, rgb(181, 169, 153));
  }
  
  .justified {
@@ -103,4 +103,12 @@ body {
  .active,
  .demo:hover {
    opacity: 1;
+ }
+
+ .bg-nav {
+   background: linear-gradient(to bottom, #ff3300 0%, #ff6666 100%);
+ }
+
+ .img-cover {
+   
  }

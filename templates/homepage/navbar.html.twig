@@ -3,21 +3,28 @@
     <div class="col-3"></div>
     <div class="col-6">
 
-      <nav class="navbar navbar-expand-lg bg-body-tertiary rounded m-3" data-bs-theme="dark">
+      {# <nav class="navbar navbar-expand-lg bg-body-tertiary rounded m-3" data-bs-theme="dark"> #}
+      <nav class="navbar navbar-expand-lg bg-body-tertiary rounded m-3 bg-nav">
             <div class="container-fluid">
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" 
+              aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ path('app_homepage') }}"><img src="./design/home.png" alt="Home" width="36" /></a>
+                    <a class="nav-link active" aria-current="page" href="{{ path('app_homepage') }}"><img 
+                    src="{{ asset('../assets/images/home.png') }}" alt="Home" width="36" /></a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_services') }}">Activités</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_jobs') }}">Chantiers</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_yard_new') }}">Demande de travaux</a>
                   </li>
 
                   {% if is_granted('IS_AUTHENTICATED_FULLY') %}

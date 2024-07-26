@@ -34,12 +34,12 @@
 //   captionText.innerHTML = dots[slideIndex - 1].alt;
 // }
 
-import { Carousel } from 'bootstrap';
+// import { Carousel } from 'bootstrap';
 
-const carousel = new bootstrap.Carousel('#carousel');
+// const carousel = new bootstrap.Carousel('#carousel');
 
-document.addEventListener("DOMContentLoaded", () => {
-   if (bootstrap.Carousel) {
-      console.log("Carousel fully loaded and parsed!");
-   }
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//    if (bootstrap.Carousel) {
+//       console.log("Carousel fully loaded and parsed!");
+//    }
+// });

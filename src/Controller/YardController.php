@@ -18,8 +18,11 @@ class YardController extends AbstractController
 {
     #[Route('/', name: 'app_yard_index', methods: ['GET'])]
     public function index(YardRepository $yardRepository): Response
+    /**
+     * Provides an entry point to yards' managing feature. List existing yards.
+     */
     {
-        //uniquement ceux de l'utilisateur
+        # List only this user's yards.
         $user = $this->getUser();
         return $this->render('yard/index.html.twig', [
             'yards' => $yardRepository->findBy(['user' => $user]),
@@ -29,6 +32,9 @@ class YardController extends AbstractController
     #[Route('/new', name: 'app_yard_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        /**
+         * Creates a new yard.
+         */
         $yard = new Yard();
         $form = $this->createForm(YardType::class, $yard);
         $form->handleRequest($request);
@@ -52,6 +58,9 @@ class YardController extends AbstractController
     #[Route('/{id}', name: 'app_yard_show', methods: ['GET'])]
     public function show(Yard $yard): Response
     {
+        /**
+         * Show a yard's details.
+         */
         return $this->render('yard/show.html.twig', [
             'yard' => $yard,
         ]);
@@ -60,6 +69,9 @@ class YardController extends AbstractController
     #[Route('/{id}/edit', name: 'app_yard_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Yard $yard, EntityManagerInterface $entityManager): Response
     {
+        /**
+         *  Edits a existing yard to update current value(s) and/or add a nullable value.
+         */
         $form = $this->createForm(YardType::class, $yard);
         $form->handleRequest($request);
 
@@ -78,6 +90,9 @@ class YardController extends AbstractController
     #[Route('/{id}', name: 'app_yard_delete', methods: ['POST'])]
     public function delete(Request $request, Yard $yard, EntityManagerInterface $entityManager): Response
     {
+        /**
+         * Deletes a specific yard from the database.
+         */
         if ($this->isCsrfTokenValid('delete' . $yard->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($yard);
             $entityManager->flush();
