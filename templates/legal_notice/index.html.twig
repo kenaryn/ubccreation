@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mentions légales{% endblock %}
+
+{% block body %}
+
+<main class="container-fluid">
+  <section>
+    <article class="mt-3" itemscope itemtype="https://schema.org/Organization">
+      <h3>Mentions légales du site web ubccreation.fr</h3>
+
+      <p>EURL <em><span itemprop="name">UBC Création</span></em> au capital social de 1000€.<br />
+      Immatriculée au Registre des commerces et des sociétés d'Orléans sous le numéro 805 233 194 00028.</p>
+
+      <ul >
+        <li>N° TVA : FR51805233194</li>
+        <li itemprop="telephone">Tél : 06 28 47 77 55</li>
+        <li itemprop="email">E-mail : ubccreation@yahoo.fr</li>
+        <li>Directeur de la publication : Monsieur <span itemprop="director">Carlos de Sousa</span>.</li>
+      </ul>
+
+    </article>
+    
+    <article class="justified mt-5">
+      <h3>Droits d'auteur et responsabilité</h3>
+
+      <p>Tous les textes, images, vidéos, graphismes, logo, icônes, et contenus présents sur le site <strong>ubccreation.fr</strong> sont la propriété de la société <em>UBC Création</em>.</p>
+
+      <p>Sauf en cas d'autorisation formelle écrite et préalable, la reproduction ainsi que toute utilisation des contenus du site <strong>ubccreation.fr</strong> autre que la consultation individuelle et privée sont interdites.</p>
+
+      <p>Toute exploitation non autorisée du site ou de l’un des éléments qu’il contient sera considérée comme constitutive d’une contrefaçon et poursuivie conformément aux dispositions des articles <em>L.335-2</em> et suivants du <em>Code de Propriété Intellectuelle</em>.</p>
+
+      <p>Le site <strong>ubccreation.fr</strong> a pour objet de fournir une information concernant l’activité de la société. Monsieur Carlos de Sousa s’efforce de fournir des informations aussi précises que possible. Toutefois, il ne pourra être tenu responsable des omissions, des inexactitudes et des carences dans la mise à jour, qu’elles soient de son fait ou du fait des tiers partenaires qui lui fournissent ces informations. Toutes les informations indiquées sur le site ubccreation.fr sont données à titre indicatif, et sont susceptibles d’évoluer.</p>
+    </article>
+      
+    <article class="justified mt-5" itemscope itemtype="https://schema.org/Organization">
+      <h3>Informations personnelles et libertés</h3>
+
+      <p>Les informations recueillies font l’objet d’un traitement informatique et sont nécessaires à la gestion de la transaction et au bon déroulement du processus de commande sur le site <strong>ubccreation.fr</strong>. Le destinataire des données est uniquement le site <strong>ubccreation.fr</strong>.<br />
+      Conformément à la loi « <em>informatique et libertés</em> » du 6 janvier 1978 modifiée en 2004, vous bénéficiez d’un droit d’accès et de rectification aux informations qui vous concernent, que vous pouvez exercer en vous adressant à ubccreation@yahoo.fr (<span itemprop="address">1795 rue de la Source 45160 Olivet</span>).</p>
+
+      <p>Vous pouvez également, pour des motifs légitimes, vous opposer au traitement des données vous concernant.</p>
+    </article>
+</section> 
+</main>
+
+{% endblock %}

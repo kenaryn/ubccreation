@@ -4,6 +4,6 @@ namespace App\Entity;
 
 enum Proposal: string
 {
-   case Estimate = "Estimate";
-   case Bill = "Bill";
+   case Estimate = "Devis";
+   case Bill = "Facture";
 }
