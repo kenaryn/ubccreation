@@ -33,7 +33,7 @@ class NewsControllerTest extends WebTestCase
         $crawler = $this->client->request('GET', $this->path);
 
         self::assertResponseStatusCodeSame(200);
-        self::assertPageTitleContains('News index');
+        self::assertPageTitleContains('Index des actualités');
 
         // Use the $crawler to perform additional assertions e.g.
         // self::assertSame('Some text on the page', $crawler->filter('.p')->first());
@@ -41,7 +41,6 @@ class NewsControllerTest extends WebTestCase
 
     public function testNew(): void
     {
-        $this->markTestIncomplete();
         $this->client->request('GET', sprintf('%snew', $this->path));
 
         self::assertResponseStatusCodeSame(200);
@@ -59,7 +58,6 @@ class NewsControllerTest extends WebTestCase
 
     public function testShow(): void
     {
-        $this->markTestIncomplete();
         $fixture = new News();
         $fixture->setTitle('My Title');
         $fixture->setBody('My Title');
@@ -71,14 +69,13 @@ class NewsControllerTest extends WebTestCase
         $this->client->request('GET', sprintf('%s%s', $this->path, $fixture->getId()));
 
         self::assertResponseStatusCodeSame(200);
-        self::assertPageTitleContains('News');
+        self::assertPageTitleContains('Actualités');
 
         // Use assertions to check that the properties are properly displayed.
     }
 
     public function testEdit(): void
     {
-        $this->markTestIncomplete();
         $fixture = new News();
         $fixture->setTitle('Value');
         $fixture->setBody('Value');
@@ -106,7 +103,6 @@ class NewsControllerTest extends WebTestCase
 
     public function testRemove(): void
     {
-        $this->markTestIncomplete();
         $fixture = new News();
         $fixture->setTitle('Value');
         $fixture->setBody('Value');

@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Editer un chantier</h1>
 
-    {{ include('yard/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('yard/_form.html.twig', {'button_label': 'Mise à jour'}) }}
 
-    <a href="{{ path('app_yard_index') }}">retourner à la liste</a>
+    <a href="{{ path('app_yard_index') }}" class="btn btn-primary">Retourner à la liste</a>
 
     {{ include('yard/_delete_form.html.twig') }}
 {% endblock %}

@@ -30,9 +30,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_yard_index') }}">Retourner à la liste</a>
+    <a href="{{ path('app_yard_index') }}" class="btn btn-primary">Retourner à la liste</a>
 
-    <a href="{{ path('app_yard_edit', {'id': yard.id}) }}">Editer</a>
+    <a href="{{ path('app_yard_edit', {'id': yard.id}) }}" class="btn btn-primary">Editer</a>
 
     {{ include('yard/_delete_form.html.twig') }}
 {% endblock %}

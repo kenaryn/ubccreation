@@ -26,7 +26,7 @@ class Yard
     private ?\DateTimeImmutable $projectDate = null;
 
     #[ORM\Column(type: "string", enumType: Proposal::class)]
-    private ?Proposal $proposal;
+    private ?Proposal $proposal = Proposal::Bill;
 
     #[ORM\Column(type: "string", enumType: Urgency::class)]
     private ?Urgency $urgency;

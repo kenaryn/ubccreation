@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Editer les actualités</h1>
 
-    {{ include('news/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('news/_form.html.twig', {'button_label': 'Mise à jour'}) }}
 
-    <a href="{{ path('app_news_index') }}">Retour à la liste</a>
+    <a href="{{ path('app_news_index') }}" class="btn btn-primary">Retour à la liste</a>
 
     {{ include('news/_delete_form.html.twig') }}
 {% endblock %}

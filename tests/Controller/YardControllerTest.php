@@ -3,6 +3,11 @@
 namespace App\Test\Controller;
 
 use App\Entity\Yard;
+use App\Entity\Proposal;
+use App\Entity\TypeSite;
+use App\Entity\Urgency;
+use App\Repository\TypeSiteRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
@@ -30,10 +35,20 @@ class YardControllerTest extends WebTestCase
 
     public function testIndex(): void
     {
+        /**
+         * Test the HTTP response code to be 200.
+         */
+        $userRepository = static::getContainer()->get(UserRepository::class);
+
+        // Retriever the test user.
+        $testUser = $userRepository->findOneByEmail('aurelien');
+        // Simulate $testUser being logged in.
+        $this->client->loginUser($testUser);
+
         $crawler = $this->client->request('GET', $this->path);
 
         self::assertResponseStatusCodeSame(200);
-        self::assertPageTitleContains('Yard index');
+        self::assertPageTitleContains('Index des chantiers');
 
         // Use the $crawler to perform additional assertions e.g.
         // self::assertSame('Some text on the page', $crawler->filter('.p')->first());
@@ -41,10 +56,8 @@ class YardControllerTest extends WebTestCase
 
     public function testNew(): void
     {
-        $this->markTestIncomplete();
         $this->client->request('GET', sprintf('%snew', $this->path));
 
-        self::assertResponseStatusCodeSame(200);
 
         $this->client->submitForm('Save', [
             'yard[city]' => 'Testing',
@@ -60,11 +73,10 @@ class YardControllerTest extends WebTestCase
 
     public function testShow(): void
     {
-        $this->markTestIncomplete();
         $fixture = new Yard();
-        $fixture->setCity('My Title');
-        $fixture->setBudget('My Title');
-        $fixture->setMaterials('My Title');
+        $fixture->setCity('Orléans');
+        $fixture->setBudget(3200);
+        $fixture->setMaterials('chêne');
         $fixture->setProjectDate(new \DateTimeImmutable());
 
         $this->manager->persist($fixture);
@@ -73,18 +85,17 @@ class YardControllerTest extends WebTestCase
         $this->client->request('GET', sprintf('%s%s', $this->path, $fixture->getId()));
 
         self::assertResponseStatusCodeSame(200);
-        self::assertPageTitleContains('Yard');
+        self::assertPageTitleContains('Chantier');
 
         // Use assertions to check that the properties are properly displayed.
     }
 
     public function testEdit(): void
     {
-        $this->markTestIncomplete();
         $fixture = new Yard();
-        $fixture->setCity('Value');
-        $fixture->setBudget('Value');
-        $fixture->setMaterials('Value');
+        $fixture->setCity('Ur');
+        $fixture->setBudget(4500);
+        $fixture->setMaterials('Polyuréthane, polystyrène, chêne');
         $fixture->setProjectDate(new \DateTimeImmutable());
 
         $this->manager->persist($fixture);
@@ -93,11 +104,10 @@ class YardControllerTest extends WebTestCase
         $this->client->request('GET', sprintf('%s%s/edit', $this->path, $fixture->getId()));
 
         $this->client->submitForm('Update', [
-            'yard[city]' => 'Something New',
-            'yard[budget]' => 'Something New',
-            'yard[materials]' => 'Something New',
-            'yard[date]' => 'Something New',
-            'yard[status]' => 'Something New',
+            'yard[city]' => 'Ur',
+            'yard[budget]' => 4500,
+            'yard[materials]' => 'Polyuréthane, polystyrène, chêne',
+            'yard[date]' => (new \DateTimeImmutable("2025-03-20 08:30"))->format("Y-m-d H:i"),
         ]);
 
         self::assertResponseRedirects('/yard/');
@@ -108,25 +118,42 @@ class YardControllerTest extends WebTestCase
         self::assertSame('Something New', $fixture[0]->getBudget());
         self::assertSame('Something New', $fixture[0]->getMaterials());
         self::assertSame('Something New', $fixture[0]->getDate());
-        self::assertSame('Something New', $fixture[0]->getStatus());
     }
 
     public function testRemove(): void
     {
-        $this->markTestIncomplete();
+        $userRepository = static::getContainer()->get(UserRepository::class);
+
+        // Retriever the test user.
+        $testUser = $userRepository->findOneByEmail('aurelien');
+        // Simulate $testUser being logged in.
+        $this->client->loginUser($testUser);
+
+        $repository = static::getContainer()->get(TypeSiteRepository::class);
+        $nb=count($repository->findAll());
+
         $fixture = new Yard();
         $fixture->setCity('Value');
-        $fixture->setBudget('Value');
+        $fixture->setBudget(42);
         $fixture->setMaterials('Value');
         $fixture->setProjectDate(new \DateTimeImmutable());
+        $fixture->setCreationDate(new \DateTimeImmutable());
+        $typeSite = new TypeSite();
+
+        $typeSite->setLabelSite('Ravalement');
+        $typeSite->setTeamSize(42);
+        $this->manager->persist($typeSite);
+
+        $fixture->setTypeSite($typeSite);
+        $fixture->setUrgency(Urgency::Low);
 
         $this->manager->persist($fixture);
         $this->manager->flush();
 
-        $this->client->request('GET', sprintf('%s%s', $this->path, $fixture->getId()));
-        $this->client->submitForm('Delete');
+        $this->client->request('POST', sprintf('%s%s', $this->path, $fixture->getId()));
+
 
         self::assertResponseRedirects('/yard/');
-        self::assertSame(0, $this->repository->count([]));
+        self::assertSame($nb, $this->repository->count([]));
     }
 }

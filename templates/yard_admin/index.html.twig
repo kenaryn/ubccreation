@@ -25,8 +25,8 @@ ADMIN
                 <td>{{ yard.materials ? yard.materials|join(', ') : '' }}</td>
                 <td>{{ yard.projectDate ? yard.projectDate|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_yard_admin_show', {'id': yard.id}) }}">Afficher</a>
-                    <a href="{{ path('app_yard_admin_edit', {'id': yard.id}) }}">Editer</a>
+                    <a href="{{ path('app_yard_admin_show', {'id': yard.id}) }}" class="btn btn-primary">Afficher</a>
+                    <a href="{{ path('app_yard_admin_edit', {'id': yard.id}) }}" class="btn btn-primary">Editer</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +37,5 @@ ADMIN
         </tbody>
     </table>
 
-    <a href="{{ path('app_yard_admin_new') }}">Créer un devis</a>
+    <a href="{{ path('app_yard_admin_new') }}" class="btn btn-primary">Créer un devis</a>
 {% endblock %}

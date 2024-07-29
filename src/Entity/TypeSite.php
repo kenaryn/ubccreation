@@ -75,7 +75,7 @@ class TypeSite
         return $this->describes;
     }
 
-    public function addDescribe(Yard $describe): static
+    public function setDescribes(Yard $describe): static
     {
         if (!$this->describes->contains($describe)) {
             $this->describes->add($describe);
