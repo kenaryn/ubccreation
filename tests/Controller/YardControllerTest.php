@@ -103,7 +103,7 @@ class YardControllerTest extends WebTestCase
 
         $this->client->request('GET', sprintf('%s%s/edit', $this->path, $fixture->getId()));
 
-        $this->client->submitForm('Update', [
+        $this->client->submitForm('Mise à jour', [
             'yard[city]' => 'Ur',
             'yard[budget]' => 4500,
             'yard[materials]' => 'Polyuréthane, polystyrène, chêne',

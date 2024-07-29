@@ -95,10 +95,10 @@ class TypeSiteControllerTest extends WebTestCase
 
         $this->client->request('GET', sprintf('%s%s/edit', $this->path, $fixture->getId()));
 
-        $this->client->submitForm('Update', [
+        $this->client->submitForm('Mise à jour', [
             'type_site[labelSite]' => 'Extension',
             'type_site[teamSize]' => 3,
-            'type_site[describes]' => 'Ma vérandu pontificale',
+            'type_site[describes]' => 'Ma véranda pontificale',
         ]);
 
         self::assertResponseRedirects('/type/site/');
@@ -121,7 +121,7 @@ class TypeSiteControllerTest extends WebTestCase
         $this->manager->flush();
 
         $this->client->request('GET', sprintf('%s%s', $this->path, $fixture->getId()));
-        $this->client->submitForm('Delete');
+        $this->client->submitForm('Supprimer');
 
         self::assertResponseRedirects('/type/site/');
         self::assertSame(0, $this->repository->count([]));

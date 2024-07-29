@@ -86,33 +86,33 @@ class NewsControllerTest extends WebTestCase
 
         $this->client->request('GET', sprintf('%s%s/edit', $this->path, $fixture->getId()));
 
-        $this->client->submitForm('Update', [
-            'news[title]' => 'Something New',
-            'news[body]' => 'Something New',
-            'news[postDate]' => 'Something New',
+        $this->client->submitForm('Mise à jour', [
+            'news[title]' => 'Lancement du site web',
+            'news[body]' => 'UBC Création lance son site web pour conquérir de nouveaux horizons',
+            'news[postDate]' => new \DateTimeImmutable('now'),
         ]);
 
         self::assertResponseRedirects('/news/');
 
         $fixture = $this->repository->findAll();
 
-        self::assertSame('Something New', $fixture[0]->getTitle());
-        self::assertSame('Something New', $fixture[0]->getBody());
-        self::assertSame('Something New', $fixture[0]->getPostDate());
+        self::assertSame('Lancement du site web', $fixture[0]->getTitle());
+        self::assertSame('UBC Création lance son site web pour conquérir de nouveaux horizons', $fixture[0]->getBody());
+        self::assertSame(new \DateTimeImmutable('now'), $fixture[0]->getPostDate());
     }
 
     public function testRemove(): void
     {
         $fixture = new News();
-        $fixture->setTitle('Value');
-        $fixture->setBody('Value');
-        $fixture->setPostDate(new \DateTimeImmutable());
+        $fixture->setTitle('Recrutement ouvert');
+        $fixture->setBody('UBC Création recrute un enduiseur et un couvreur-zingeur');
+        $fixture->setPostDate(new \DateTimeImmutable('2025-01-13'));
 
         $this->manager->persist($fixture);
         $this->manager->flush();
 
         $this->client->request('GET', sprintf('%s%s', $this->path, $fixture->getId()));
-        $this->client->submitForm('Delete');
+        $this->client->submitForm('Supprimer');
 
         self::assertResponseRedirects('/news/');
         self::assertSame(0, $this->repository->count([]));

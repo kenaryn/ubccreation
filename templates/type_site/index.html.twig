@@ -5,33 +5,36 @@
 {% block body %}
     <h1>Index des types de chantier</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Identifiant</th>
-                <th>Type de chantier</th>
-                <th>Taille d'équipe adéquate</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for type_site in type_sites %}
-            <tr>
-                <td>{{ type_site.id }}</td>
-                <td>{{ type_site.labelSite }}</td>
-                <td>{{ type_site.teamSize }}</td>
-                <td>
-                    <a href="{{ path('app_type_site_admin_show', {'id': type_site.id}) }}">Afficher</a>
-                    <a href="{{ path('app_type_site_admin_edit', {'id': type_site.id}) }}">Editer</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">Aucun type de chantier trouvé.</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <a href="{{ path('app_type_site_admin_new') }}">Créer un type de chantier</a>
+    <div class="table-responsive">
+        <table class="table table-secondary table-hover table-sm table-align-middle text-center">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">Identifiant</th>
+                    <th scope="col">Type de chantier</th>
+                    <th scope="col">Taille d'équipe adéquate</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            {% for type_site in type_sites %}
+                <tr>
+                    <td>{{ type_site.id }}</td>
+                    <td>{{ type_site.labelSite }}</td>
+                    <td>{{ type_site.teamSize }}</td>
+                    <td>
+                        <a href="{{ path('app_type_site_admin_show', {'id': type_site.id}) }}" class="btn btn-primary">Afficher</a>
+                        <a href="{{ path('app_type_site_admin_edit', {'id': type_site.id}) }}" class="btn btn-primary">Editer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucun type de chantier trouvé.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="{{ path('app_type_site_admin_new') }}" class="btn btn-primary">Créer un type de chantier</a>
 {% endblock %}
