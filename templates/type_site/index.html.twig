@@ -6,7 +6,7 @@
     <h1>Index des types de chantier</h1>
 
 
-    <div class="table-responsive">
+    <div class="table-responsive mx-auto p-2 w-50">
         <table class="table table-secondary table-hover table-sm table-align-middle text-center">
             <thead class="table-light">
                 <tr>
@@ -23,8 +23,10 @@
                     <td>{{ type_site.labelSite }}</td>
                     <td>{{ type_site.teamSize }}</td>
                     <td>
-                        <a href="{{ path('app_type_site_admin_show', {'id': type_site.id}) }}" class="btn btn-primary">Afficher</a>
-                        <a href="{{ path('app_type_site_admin_edit', {'id': type_site.id}) }}" class="btn btn-primary">Editer</a>
+                        <a href="{{ path('app_type_site_admin_show', {'id': type_site.id}) }}" class="btn btn-primary 
+                        mb-2">Afficher</a>
+                        <a href="{{ path('app_type_site_admin_edit', {'id': type_site.id}) }}" class="btn btn-primary 
+                        mb-2">Editer</a>
                     </td>
                 </tr>
             {% else %}

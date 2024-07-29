@@ -5,7 +5,8 @@
 {% block body %}
     <h1>Chantier</h1>
 
-    <table class="table">
+<div class="table-responsive mx-auto p-2 w-50">
+    <table class="table table-secondary table-hover table-sm table-align-middle text-center">
         <tbody>
             <tr>
                 <th>Identifiant</th>
@@ -29,10 +30,11 @@
             </tr>
         </tbody>
     </table>
+</div>
 
-    <a href="{{ path('app_yard_index') }}" class="btn btn-primary">Retour à la liste</a>
+    <a href="{{ path('app_yard_index') }}" class="btn btn-primary mb-2">Retour à la liste</a>
 
-    <a href="{{ path('app_yard_edit', {'id': yard.id}) }}" class="btn btn-primary">Editer</a>
+    <a href="{{ path('app_yard_edit', {'id': yard.id}) }}" class="btn btn-primary mb-2">Editer</a>
 
     {{ include('yard/_delete_form.html.twig') }}
 {% endblock %}

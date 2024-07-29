@@ -5,26 +5,28 @@
 {% block body %}
     <h1>Type de chantier - Détails</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Identifiant</th>
-                <td>{{ type_site.id }}</td>
-            </tr>
-            <tr>
-                <th>Type de chantier</th>
-                <td>{{ type_site.labelSite }}</td>
-            </tr>
-            <tr>
-                <th>Taille d'équipe adéquate</th>
-                <td>{{ type_site.teamSize }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-responsive mx-auto p-2 w-50">
+        <table class="table table-secondary table-hover table-sm table-align-middle text-center">
+            <tbody>
+                <tr>
+                    <th scope="col">Identifiant</th>
+                    <td>{{ type_site.id }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Type de chantier</th>
+                    <td>{{ type_site.labelSite }}</td>
+                </tr>
+                <tr>
+                    <th scope="col">Taille d'équipe adéquate</th>
+                    <td>{{ type_site.teamSize }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <a href="{{ path('app_type_site_admin_index') }}" class="btn btn-primary">Retour à la liste</a>
+    <a href="{{ path('app_type_site_admin_index') }}" class="btn btn-primary mb-2">Retour à la liste</a>
 
-    <a href="{{ path('app_type_site_admin_edit', {'id': type_site.id}) }}" class="btn btn-primary">Editer</a>
+    <a href="{{ path('app_type_site_admin_edit', {'id': type_site.id}) }}" class="btn btn-primary mb-2">Editer</a>
 
     {{ include('type_site/_delete_form.html.twig') }}
 {% endblock %}

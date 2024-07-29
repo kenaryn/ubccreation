@@ -3,18 +3,21 @@
 {% block title %}Index des chantiers{% endblock %}
 
 {% block body %}
-    <h1>Index des chantiers</h1>
-ADMIN
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Identifiant</th>
-                <th>Commune</th>
-                <th>Budget</th>
-                <th>Materiaux</th>
-                <th>Date de création</th>
-                <th>actions</th>
-            </tr>
+
+<h1>Index des chantiers</h1>
+
+<div class="table-responsive mx-auto p-2 w-50">
+    <table class="table table-secondary table-hover table-sm table-align-middle text-center">
+        <caption>Administration des chantiers prospects et clients</caption>
+        <thead class="table-light">
+        <tr>
+            <th>Identifiant</th>
+            <th>Commune</th>
+            <th>Budget</th>
+            <th>Materiaux</th>
+            <th>Date de création</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for yard in yards %}
@@ -36,6 +39,7 @@ ADMIN
         {% endfor %}
         </tbody>
     </table>
+</div>
 
     <a href="{{ path('app_yard_admin_new') }}" class="btn btn-primary">Créer un devis</a>
 {% endblock %}

@@ -5,8 +5,9 @@
 {% block body %}
     <h1>Index des chantiers</h1>
 
-    <table class="table">
-        <thead>
+<div class="table-responsive mx-auto p-2 w-50">
+    <table class="table table-secondary table-hover table-sm table-align-middle text-center">
+        <thead class="table-light">
             <tr>
                 <th>Identifiant</th>
                 <th>Commune</th>
@@ -25,8 +26,8 @@
                 <td>{{ yard.materials ? yard.materials|join(', ') : '' }}</td>
                 <td>{{ yard.projectDate ? yard.projectDate|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_yard_show', {'id': yard.id}) }}" class="btn btn-primary">Afficher</a>
-                    <a href="{{ path('app_yard_edit', {'id': yard.id}) }}" class="btn btn-primary">Editer</a>
+                    <a href="{{ path('app_yard_show', {'id': yard.id}) }}" class="btn btn-primary mb-2">Afficher</a>
+                    <a href="{{ path('app_yard_edit', {'id': yard.id}) }}" class="btn btn-primary mb-2">Editer</a>
                 </td>
             </tr>
         {% else %}
@@ -36,6 +37,7 @@
         {% endfor %}
         </tbody>
     </table>
+</div>
 
-    <a href="{{ path('app_yard_new') }}" class="btn btn-primary">Créer un devis</a>
+    <a href="{{ path('app_yard_new') }}" class="btn btn-primary mb-2">Créer un devis</a>
 {% endblock %}

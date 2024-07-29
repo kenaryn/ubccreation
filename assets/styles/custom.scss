@@ -126,3 +126,7 @@ ol, ul {
    list-style-type: none;
    padding: 0.4rem 0.6rem;
 }
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #ff6666;
+}
