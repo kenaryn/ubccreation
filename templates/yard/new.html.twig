@@ -3,9 +3,16 @@
 {% block title %}Nouveau chantier{% endblock %}
 
 {% block body %}
-    <h1>Créer un nouveau chantier</h1>
-
+<div class="mx-auto p-2 w-50">
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Créer un nouveau chantier</h5>
     {{ include('yard/_form.html.twig') }}
+  </div>
+</div>
+   </div>
 
-    <a href="{{ path('app_yard_index') }}" class="btn btn-primary">Retourner à la liste</a>
+    
+
+
 {% endblock %}
