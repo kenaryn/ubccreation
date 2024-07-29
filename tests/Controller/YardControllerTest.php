@@ -60,10 +60,10 @@ class YardControllerTest extends WebTestCase
 
 
         $this->client->submitForm('Save', [
-            'yard[city]' => 'Testing',
-            'yard[budget]' => 'Testing',
-            'yard[materials]' => 'Testing',
-            'yard[projectDate]' => 'Testing',
+            'yard[city]' => 'Argelès',
+            'yard[budget]' => 16500,
+            'yard[materials]' => 'Bio-membrane, frêne',
+            'yard[projectDate]' => (new \DateTimeImmutable('2024-10-31')),
         ]);
 
         self::assertResponseRedirects($this->path);
@@ -114,10 +114,10 @@ class YardControllerTest extends WebTestCase
 
         $fixture = $this->repository->findAll();
 
-        self::assertSame('Something New', $fixture[0]->getCity());
-        self::assertSame('Something New', $fixture[0]->getBudget());
-        self::assertSame('Something New', $fixture[0]->getMaterials());
-        self::assertSame('Something New', $fixture[0]->getDate());
+        self::assertSame('Ur', $fixture[0]->getCity());
+        self::assertSame(4500, $fixture[0]->getBudget());
+        self::assertSame('Polyuréthane, polystyrène, chêne', $fixture[0]->getMaterials());
+        self::assertSame((new \DateTimeImmutable("2025-03-20 08:30")), $fixture[0]->getDate());
     }
 
     public function testRemove(): void
@@ -133,10 +133,10 @@ class YardControllerTest extends WebTestCase
         $nb=count($repository->findAll());
 
         $fixture = new Yard();
-        $fixture->setCity('Value');
-        $fixture->setBudget(42);
-        $fixture->setMaterials('Value');
-        $fixture->setProjectDate(new \DateTimeImmutable());
+        $fixture->setCity('Moscou');
+        $fixture->setBudget(432);
+        $fixture->setMaterials('Hêtre');
+        $fixture->setProjectDate(new \DateTimeImmutable(2024-12-12));
         $fixture->setCreationDate(new \DateTimeImmutable());
         $typeSite = new TypeSite();
 
