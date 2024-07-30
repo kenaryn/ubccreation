@@ -15,13 +15,30 @@ class YardAdminType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('city')
-            ->add('budget')
-            ->add('projectDate', null, [
-                'widget' => 'single_text'
+            ->add('city', null, [
+                'label' => 'city'
             ])
-            ->add('proposal', EnumType::class, ['class' => Proposal::class])
-            ->add('urgency', EnumType::class, ['class' => Urgency::class]);
+            ->add('budget', null, [
+                'label' => 'budget',
+                'attr' => array(
+                    'min' => 1
+                )
+            ])
+            ->add('projectDate', null, [
+                'label' => 'projectDate',
+                'widget' => 'single_text',
+                'attr' => array(
+                    'min' => (new \DateTimeImmutable('now'))->format('Y-m-d')
+                )
+            ])
+            ->add('proposal', EnumType::class, [
+                'label' => 'proposal',
+                'class' => Proposal::class
+                ])
+            ->add('urgency', EnumType::class, [
+                'label' => 'urgency',
+                'class' => Urgency::class
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

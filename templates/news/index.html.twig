@@ -24,8 +24,8 @@
                 <td>{{ news.body }}</td>
                 <td>{{ news.postDate ? news.postDate|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_news_show', {'id': news.id}) }}" class="btn btn-primary mb-2">Afficher</a>
-                    <a href="{{ path('app_news_edit', {'id': news.id}) }}" class="btn btn-primary mb-2">Editer</a>
+                    <a href="{{ path('app_news_admin_show', {'id': news.id}) }}" class="btn btn-primary mb-2">Afficher</a>
+                    <a href="{{ path('app_news_admin_edit', {'id': news.id}) }}" class="btn btn-primary mb-2">Editer</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +37,5 @@
     </table>
 </div>
 
-    <a href="{{ path('app_news_new') }}" class="btn btn-primary mb-2">Créer une actualité</a>
+    <a href="{{ path('app_news_admin_new') }}" class="btn btn-primary mb-2">Créer une actualité</a>
 {% endblock %}

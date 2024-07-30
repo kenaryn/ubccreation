@@ -9,6 +9,9 @@ framework:
     #esi: true
     #fragments: true
 
+    # Enable french translation
+    translator: { default_path: '%kernel.project_dir%/translations'}
+
 when@test:
     framework:
         test: true

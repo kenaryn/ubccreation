@@ -16,18 +16,33 @@ class YardType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('city')
+            ->add('city', null, [
+                'label' => 'city'
+            ])
             ->add('typeSite',EntityType::class,[
-                'class' => TypeSite::class])
-            ->add('budget')
-            ->add('materials')
-            ->add('projectDate', null, [
-                'widget' => 'single_text',
+                'label' => 'typeSite',
+                'class' => TypeSite::class
+                ])
+            ->add('budget', null, [
+                'label' => 'budget',
                 'attr' => array(
-                    'min' => (new \DateTimeImmutable())->format('Y-m-d')
+                    'min' => 1
                 )
             ])
-            ->add('urgency', EnumType::class, ['class' => Urgency::class]);
+            ->add('materials', null, [
+                'label' => 'materials'
+            ])
+            ->add('projectDate', null, [
+                'label' => 'projectDate',
+                'widget' => 'single_text',
+                'attr' => array(
+                    'min' => (new \DateTimeImmutable('now'))->format('Y-m-d')
+                )
+            ])
+            ->add('urgency', EnumType::class, [
+                'label' => 'urgency',
+                'class' => Urgency::class
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
