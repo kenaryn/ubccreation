@@ -6,7 +6,10 @@
 
 - PHP 8.3
 - MYSQL 8.3
-- adminer
+- PhpMyAdmin
 - phpunit
 - git
 - github
+- docker/docker-compose
+- twig
+- SCSS
