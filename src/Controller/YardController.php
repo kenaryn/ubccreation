@@ -22,11 +22,17 @@ class YardController extends AbstractController
      * Provides an entry point to yards' managing feature. List existing yards.
      */
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         # List only this user's yards.
-        $user = $this->getUser();
-        return $this->render('yard/index.html.twig', [
-            'yards' => $yardRepository->findBy(['user' => $user]),
-        ]);
+
+        // if (!$this->isGranted('ROLE_USER')) 
+        // $this->redirectToRoute('APP_REGISTER');
+
+            $user = $this->getUser();
+            return $this->render('yard/index.html.twig', [
+                'yards' => $yardRepository->findBy(['user' => $user]),
+            ]);
+      
     }
 
     #[Route('/new', name: 'app_yard_new', methods: ['GET', 'POST'])]
@@ -35,6 +41,8 @@ class YardController extends AbstractController
         /**
          * Creates a new yard.
          */
+        if (!$this->isGranted('ROLE_USER')) 
+        return $this->render('yard/need-to-register.html.twig');
         $yard = new Yard();
         $form = $this->createForm(YardType::class, $yard);
         $form->handleRequest($request);
@@ -61,6 +69,7 @@ class YardController extends AbstractController
         /**
          * Show a yard's details.
          */
+        $this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('yard/show.html.twig', [
             'yard' => $yard,
         ]);
@@ -72,6 +81,8 @@ class YardController extends AbstractController
         /**
          *  Edits a existing yard to update current value(s) and/or add a nullable value.
          */
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        // ajouter tester si c'est le sien vraiùment TODO
         $form = $this->createForm(YardType::class, $yard);
         $form->handleRequest($request);
 
@@ -93,6 +104,8 @@ class YardController extends AbstractController
         /**
          * Deletes a specific yard from the database.
          */
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        // ajouter tester si c'est le sien vraiùment TODO
         if ($this->isCsrfTokenValid('delete' . $yard->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($yard);
             $entityManager->flush();

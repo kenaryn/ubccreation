@@ -38,7 +38,8 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/yard, roles: ROLE_USER }
+        # - { path: ^/yard, roles: ROLE_USER }
+        #  - { path: ^/yard/(show|)\d+$, roles: ROLE_USER  } # TODO! symfony.com/doc/current/security.html#roles
 
 when@test:
     security:
