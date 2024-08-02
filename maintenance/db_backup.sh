@@ -1,5 +1,5 @@
-# Run every Wednesday and Saturday at 03:00 a.m
 #!/usr/bin/env elv
+# Run every Wednesday and Saturday at 03:00 a.m
 
 # Halt immediately when encountering a failure.
 set -e
