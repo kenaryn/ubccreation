@@ -13,3 +13,4 @@
 - docker/docker-compose
 - twig
 - SCSS
+                                                                                    alias.st=status -s 
