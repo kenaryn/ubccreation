@@ -46,34 +46,52 @@
 
    
 // Keep a track of pressed keys.
-let pressedKeys = {};
-   
-document.addEventListener(
-   "keydown",
-   (event) => {
+let pressedKeys = new Set();
+let timer = null;
+
+document.addEventListener("keydown", (event) => {
+   let logout_btn = document.getElementById('logout');
+
    // Populate the object with keys'state.
-   pressedKeys[event.code] = true;
-    
+   pressedKeys.add(event.key);
+   
    if (event.defaultPrevented) {
       return;  // Do nothing if event is already processed.
    }
-   
-   switch (true) {
-      case pressedKeys["ControlLeft"] && pressedKeys["KeyH"]:
-        console.log("redirection thanks to keyboard");
-        window.location = ''
-        break;
 
-      default:
-        return;
-    }
-    
-    event.preventDefault();
+   // Clear any existing timer.
+   if (timer) {
+      clearTimeout(timer);
+   }
+   
+   // Set a delay of 50ms before executing the callback to avoid triggering a combination of a single key.
+   timer = setTimeout(() => {
+      switch (true) {
+         case pressedKeys.has("Control") && pressedKeys.has("a"):
+            window.location = 'http://localhost:80/'
+            break;
+            
+         case pressedKeys.has("Control") && pressedKeys.has("d"):
+            if (logout_btn != undefined) {
+            window.location = 'http://localhost:80/logout';
+         }
+            break;
+         
+         case pressedKeys.has("Control") && pressedKeys.has("h"):
+            // TODO: add an help-like pop-up to inform user with available shortcuts.
+            break;
+            
+         default:
+            return;
+      }
+      
+      event.preventDefault();
+   }, 50);
    },
    true
 );
 
 // Release the key when released to prevent further awkwardnesses.
 document.addEventListener("keyup", (event) => {
-  delete pressedKeys[event.code];
+  pressedKeys.delete(event.key);
 });
