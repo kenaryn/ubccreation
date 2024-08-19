@@ -123,10 +123,20 @@ body {
 }
 
 ol, ul {
-   list-style-type: none;
+  //  list-style-type: none;
    padding: 0.4rem 0.6rem;
 }
 
 table.table-hover tr td:hover td {
   background-color: #ff6666!important;
+}
+
+.tab-nav > li:focus {
+  outline: none;
+  padding: 3px 0 3px 5px;
+  margin: 5px 1px 3px 0;
+  border: 1px solid rgba(81, 203, 238, 1);
+  border-radius: 7%;
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  max-width: 40%;
 }
