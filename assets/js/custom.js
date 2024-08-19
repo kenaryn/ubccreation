@@ -43,3 +43,37 @@
 //       console.log("Carousel fully loaded and parsed!");
 //    }
 // });
+
+   
+// Keep a track of pressed keys.
+let pressedKeys = {};
+   
+document.addEventListener(
+   "keydown",
+   (event) => {
+   // Populate the object with keys'state.
+   pressedKeys[event.code] = true;
+    
+   if (event.defaultPrevented) {
+      return;  // Do nothing if event is already processed.
+   }
+   
+   switch (true) {
+      case pressedKeys["ControlLeft"] && pressedKeys["KeyH"]:
+        console.log("redirection thanks to keyboard");
+        window.location = ''
+        break;
+
+      default:
+        return;
+    }
+    
+    event.preventDefault();
+   },
+   true
+);
+
+// Release the key when released to prevent further awkwardnesses.
+document.addEventListener("keyup", (event) => {
+  delete pressedKeys[event.code];
+});
