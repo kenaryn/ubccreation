@@ -39,16 +39,17 @@ class YardController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         /**
-         * Creates a new yard.
+         * Creates a new yard, which requires to be an authenticated user.
          */
         if (!$this->isGranted('ROLE_USER')) 
         return $this->render('yard/need-to-register.html.twig');
+
         $yard = new Yard();
         $form = $this->createForm(YardType::class, $yard);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $yard->setCreationDate(new DateTimeImmutable());
+            $yard->setCreationDate(new DateTimeImmutable('now'));
             $yard->setUser($this->getUser());
             $yard->setProposal(Proposal::Estimate);
             $entityManager->persist($yard);
