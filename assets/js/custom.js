@@ -1,50 +1,6 @@
 "use strict";
 
-// let slideIndex = 1;
-// showSlides(slideIndex);
-
-// function plusSlides(n) {
-//   showSlides((slideIndex += n));
-// }
-
-// function currentSlide(n) {
-//   showSlides((slideIndex = n));
-// }
-
-// function showSlides(n) {
-//   let i;
-//   let d = document;
-//   let slides = d.getElementsByClassName("mySlides");
-//   let dots = d.getElementsByClassName("demo");
-//   let captionText = d.getElementById("caption");
-
-//   if (n > slides.length) slideIndex = 1;
-//   if (n < 1) slideIndex = slides.length;
-
-//   for (i = 0; i < slides.length; i++) {
-//     slides[i].style.display = "none";
-//   }
-
-//   for (i = 0; i < dots.length; i++) {
-//     dots[i].className = dots[i].className.replace(" active", "");
-//   }
-
-//   slides[slideIndex - 1].style.display = "block";
-//   dots[slideIndex - 1].className += " active";
-//   captionText.innerHTML = dots[slideIndex - 1].alt;
-// }
-
-// import { Carousel } from 'bootstrap';
-
-// const carousel = new bootstrap.Carousel('#carousel');
-
-// document.addEventListener("DOMContentLoaded", () => {
-//    if (bootstrap.Carousel) {
-//       console.log("Carousel fully loaded and parsed!");
-//    }
-// });
-
-   
+/* Global keyboard shortcuts */   
 // Keep a track of pressed keys.
 let pressedKeys = new Set();
 let timer = null;
@@ -95,3 +51,38 @@ document.addEventListener("keydown", (event) => {
 document.addEventListener("keyup", (event) => {
   pressedKeys.delete(event.key);
 });
+
+// HTML nodes
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay');
+const btnCloseModal = document.querySelector('.close-modal');
+const btnOpenModal = document.querySelector('.show-modal');
+
+const openModal = function () {
+   modal.classList.remove('hidden');
+   overlay.classList.remove('hidden');
+}
+
+const closeModal = function () {
+   modal.classList.add('hidden');
+   overlay.classList.add('hidden');
+}
+
+// Events
+btnOpenModal.addEventListener('click', openModal, true);
+btnCloseModal.addEventListener('click', closeModal, true);
+overlay.addEventListener('click', closeModal, true);
+
+window.addEventListener('keydown', (event) => {
+   if (event.defaultPrevented) {
+      return;
+   }
+
+   if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+      console.log('esc key pressed');
+      closeModal();
+   }
+
+   // event.preventDefault();
+   // event.stopPropagation();
+}, true);
