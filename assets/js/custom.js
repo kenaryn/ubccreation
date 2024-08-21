@@ -49,7 +49,7 @@ document.addEventListener("keydown", (event) => {
 
 
 // HTML nodes
-const modal = document.querySelector('.modal');
+const modal = document.querySelector('.custom-modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.close-modal');
 const btnOpenModal = document.querySelector('.show-modal');
@@ -78,6 +78,7 @@ overlay.addEventListener('click', closeModal, true);
 document.addEventListener('keydown', (event) => {
    pressedKeys.add(event.key);
 
+   // Do no thing if event already processed.
    if (event.defaultPrevented) {
       return;
    }
@@ -86,6 +87,7 @@ document.addEventListener('keydown', (event) => {
       closeModal();
    }
 
+   // Prevent event from being dealt with twice.
    event.preventDefault();
    // event.stopPropagation();
 }, true);

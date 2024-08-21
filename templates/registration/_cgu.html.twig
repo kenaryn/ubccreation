@@ -1,4 +1,26 @@
-<div class="modal hidden">
+{% apply inline_css %}
+        <style>
+            {# * {
+                margin: 0;
+                padding: 0;
+                box-sizing: inherit;
+            }
+
+            html {
+                box-sizing: border-box;
+            }
+
+            body {
+                height: 100vh;
+                position: relative!important;
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+            } #}
+        </style>
+    {% endapply %}
+
+<div class="custom-modal hidden">
    <button class="close-modal">&times;</button>
 
    <h2>Conditions générales d’utilisation du site UBC Création</h2>
