@@ -47,10 +47,6 @@ document.addEventListener("keydown", (event) => {
    true
 );
 
-// Release the key when released to prevent further awkwardnesses.
-document.addEventListener("keyup", (event) => {
-  pressedKeys.delete(event.key);
-});
 
 // HTML nodes
 const modal = document.querySelector('.modal');
@@ -68,21 +64,28 @@ const closeModal = function () {
    overlay.classList.add('hidden');
 }
 
-// Events
+/* Events */
+
+// Release the key when released to prevent further awkwardnesses.
+document.addEventListener("keyup", (event) => {
+  pressedKeys.delete(event.key);
+});
+
 btnOpenModal.addEventListener('click', openModal, true);
 btnCloseModal.addEventListener('click', closeModal, true);
 overlay.addEventListener('click', closeModal, true);
 
-window.addEventListener('keydown', (event) => {
+document.addEventListener('keydown', (event) => {
+   pressedKeys.add(event.key);
+
    if (event.defaultPrevented) {
       return;
    }
-
-   if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
-      console.log('esc key pressed');
+   
+   if (pressedKeys.has('Escape') && !modal.classList.contains('hidden')) {
       closeModal();
    }
 
-   // event.preventDefault();
+   event.preventDefault();
    // event.stopPropagation();
 }, true);
