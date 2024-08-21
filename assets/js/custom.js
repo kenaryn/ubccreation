@@ -1,7 +1,7 @@
 "use strict";
+import * as Geolocation from './geolocation.js';
 
 /* Global keyboard shortcuts */   
-// Keep a track of pressed keys.
 let pressedKeys = new Set();
 let timer = null;
 
@@ -46,23 +46,8 @@ document.addEventListener("keydown", (event) => {
    },
    true
 );
+/* Global keyboard shortcuts - END */
 
-
-// HTML nodes
-const modal = document.querySelector('.custom-modal');
-const overlay = document.querySelector('.overlay');
-const btnCloseModal = document.querySelector('.close-modal');
-const btnOpenModal = document.querySelector('.show-modal');
-
-const openModal = function () {
-   modal.classList.remove('hidden');
-   overlay.classList.remove('hidden');
-}
-
-const closeModal = function () {
-   modal.classList.add('hidden');
-   overlay.classList.add('hidden');
-}
 
 /* Events */
 
@@ -71,23 +56,26 @@ document.addEventListener("keyup", (event) => {
   pressedKeys.delete(event.key);
 });
 
-btnOpenModal.addEventListener('click', openModal, true);
-btnCloseModal.addEventListener('click', closeModal, true);
-overlay.addEventListener('click', closeModal, true);
 
-document.addEventListener('keydown', (event) => {
-   pressedKeys.add(event.key);
+/* Visitor's Geolocation */
+if (document.readyState === 'loading') {
+   document.addEventListener('DOMContentLoaded', Geolocation.getVisitorCurrentLocation())
+} else {
+   Geolocation.getVisitorCurrentLocation();
+}
+/* Visitor's Geolocation - END */
 
-   // Do no thing if event already processed.
-   if (event.defaultPrevented) {
-      return;
+const readYardsLocation = async function () {
+   try {
+      const response = await fetch('./yards.json');
+      const locations = await response.json();
+
+      if (response.ok) {
+         console.log('successfully fetch the json file');
+      } else {
+         console.warn('Failed to retrieve JSON data.');
+      }
+   } catch (error) {
+      console.error("Failed to fetch JSON's yard locations.");
    }
-   
-   if (pressedKeys.has('Escape') && !modal.classList.contains('hidden')) {
-      closeModal();
-   }
-
-   // Prevent event from being dealt with twice.
-   event.preventDefault();
-   // event.stopPropagation();
-}, true);
+};

@@ -2,6 +2,14 @@
 
 {% block title %}Créer un compte{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+
+    {% if app.request.attributes.get('_route') == 'app_register' %}
+        <script type="module" src="{{ asset('../../public/assets/js/cgumodals.js') }}"></script>
+    {% endif %}
+{% endblock %}
+
 {% block body %}
     
     <div class="mx-auto p-2 w-50">
