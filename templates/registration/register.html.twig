@@ -6,7 +6,8 @@
     {{ parent() }}
 
     {% if app.request.attributes.get('_route') == 'app_register' %}
-        <script type="module" src="{{ asset('../../public/assets/js/cgumodals.js') }}"></script>
+        {# <script type="module" src="{{ asset('assets/js/cgumodals.js') }}"></script> #}
+        {{ importmap('cgumodal') }}
     {% endif %}
 {% endblock %}
 

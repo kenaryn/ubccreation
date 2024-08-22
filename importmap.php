@@ -35,4 +35,8 @@ return [
         'version' => '5.3.3',
         'type' => 'css',
     ],
+    'cgumodal' => [
+        'path' => './assets/js/cgumodal.js',
+        'entrypoint' => true,
+    ],
 ];
