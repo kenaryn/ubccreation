@@ -1,24 +1,27 @@
-{% apply inline_css %}
-        <style>
-            {# * {
-                margin: 0;
-                padding: 0;
-                box-sizing: inherit;
-            }
+{# {% apply inline_css %}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: inherit;
+        }
 
-            html {
-                box-sizing: border-box;
-            }
+        html {
+            box-sizing: border-box;
+        }
 
-            body {
-                height: 100vh;
-                position: relative!important;
-                display: flex;
-                align-items: flex-start;
-                justify-content: center;
-            } #}
-        </style>
-    {% endapply %}
+        body {
+            height: 100vh;
+            position: relative!important;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+    </style>
+{% endapply %} #}
+
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
 
 <div class="custom-modal hidden">
    <button class="close-modal">&times;</button>

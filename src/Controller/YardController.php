@@ -106,7 +106,6 @@ class YardController extends AbstractController
          * Deletes a specific yard from the database.
          */
         $this->denyAccessUnlessGranted('ROLE_USER');
-        // ajouter tester si c'est le sien vraiùment TODO
         if ($this->isCsrfTokenValid('delete' . $yard->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($yard);
             $entityManager->flush();
