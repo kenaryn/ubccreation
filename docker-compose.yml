@@ -10,7 +10,8 @@ services:
       - mysql-srv
       
   mysql-srv:
-    image: mysql:8.3.0
+  build: ./docker-build/mysql
+    # image: mysql:8.3.0
     environment:
       MYSQL_ROOT_PASSWORD: I*LiveForMySelf1602!
       MYSQL_DATABASE: ubc_db
@@ -18,10 +19,16 @@ services:
       MYSQL_PASSWORD: IAmFreeNow!411
     ports:
       - '3306:3306'
+    # command: --default-authentication-plugin=mysql_native_password
+    # restart: always
+  # https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
       - "8076:80"
-    links:
-      - mysql-srv:db
+    depends_on:
+    - mysql-srv
+
+    # links:
+    #   - mysql-srv:db
