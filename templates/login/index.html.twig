@@ -16,10 +16,12 @@
             <h3 class="card-title">Connexion au compte utilisateur</h3>
                 <form action="{{ path('app_login') }}" method="post">
                     <label for="username">Email:</label>
-                    <input tabindex="10" type="text" id="username" name="_username" placeholder= "Entrez votre email" value="{{ last_username }}">
+                    <input tabindex="10" type="text" id="username" name="_username" placeholder= "Entrez votre email" 
+                    value="{{ last_username }}">
 
                     <label for="password">Mot de passe:</label>
-                    <input tabindex="20" type="password" id="password" name="_password" placeholder="Entrez votre mot de passe">
+                    <input tabindex="20" type="password" id="password" name="_password" 
+                    placeholder="Entrez votre mot de passe">
 
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                     <button tabindex="30" type="submit" class="btn btn-primary">Connexion</button>

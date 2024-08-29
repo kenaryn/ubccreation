@@ -36,7 +36,8 @@ class YardControllerTest extends WebTestCase
     public function testIndex(): void
     {
         /**
-         * Test the HTTP response code to be 200.
+         * Test the nominal end-user scenario performing an log in action.
+         * The expected result MUST be the HTTP response code 200.
          */
         $userRepository = static::getContainer()->get(UserRepository::class);
 
@@ -49,13 +50,16 @@ class YardControllerTest extends WebTestCase
 
         self::assertResponseStatusCodeSame(200);
         self::assertPageTitleContains('Index des chantiers');
+    }
 
         // Use the $crawler to perform additional assertions e.g.
         // self::assertSame('Some text on the page', $crawler->filter('.p')->first());
-    }
 
     public function testNew(): void
     {
+        /**
+         * Test the nominal end-user scenario performing an log in action.
+         */
         $this->client->request('GET', sprintf('%snew', $this->path));
 
 
@@ -130,13 +134,13 @@ class YardControllerTest extends WebTestCase
         $this->client->loginUser($testUser);
 
         $repository = static::getContainer()->get(TypeSiteRepository::class);
-        $nb=count($repository->findAll());
+        $nb = count($repository->findAll());
 
         $fixture = new Yard();
         $fixture->setCity('Moscou');
         $fixture->setBudget(432);
         $fixture->setMaterials('Hêtre');
-        $fixture->setProjectDate(new \DateTimeImmutable(2024-12-12));
+        $fixture->setProjectDate(new \DateTimeImmutable(2024 - 12 - 12));
         $fixture->setCreationDate(new \DateTimeImmutable());
         $typeSite = new TypeSite();
 

@@ -86,8 +86,7 @@ class Yard
 
     public function setCity(string $city): static
     {
-        $this->city = $city;
-
+        $this->city = strtoupper($city);
         return $this;
     }
 
